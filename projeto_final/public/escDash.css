@@ -1,0 +1,125 @@
+/* basicamente todo alterado */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff; /* Fundo cinza escuro */
+  color: rgb(0, 0, 0);
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #34495e;
+  padding: 10px 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-navbar {
+  height: 50px;
+}
+
+.ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.ul a {
+  color: rgb(0, 0, 0); /* Links brancos na navbar */
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+.ul .btn {
+
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.content {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.titulo-secao {
+  margin-bottom: 20px;
+}
+
+.box-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.metric {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.box-info-single {
+  width: 180px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.metric-table {
+  margin: 20px;
+}
+
+.metric-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.metric-table th, .metric-table td {
+  border: 1px solid rgb(0, 0, 0); /* Bordas brancas */
+  padding: 10px;
+  text-align: center;
+}
+
+.metric-table th {
+  background-color: #6d7a88;
+}
+
+.separator {
+  width: 500px;
+  height: 3px;
+  background-color: #e74c3c;
+  margin: 0 auto;
+}
+
+.footer {
+  background-color: #34495e;
+  padding: 20px 0;
+  margin-top: 20px;
+  color: white;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer ul a {
+  color: white; /* Links brancos no footer */
+  text-decoration: none;
+}

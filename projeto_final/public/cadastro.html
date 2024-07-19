@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Tela de Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="formulario_cadastro.css" />
+  <link rel="icon" href="imagens/logo.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+</head>
+
+<body style="font-family: Inter;">
+  <div class="CadastroPage"> <!-- Div que representa a página inteira -->
+    <div class="header">
+      <div class="container">
+        <div class="container1"> <!-- Retângulo que contém tudo dentro dele -->
+          <img src="imagens/logo.png" class="primeLogo"> <!-- Corrigido o src da imagem -->
+          <div class="section" style="visibility: hidden;" id="section"> <!-- Seção escondida que apresenta erro caso login ou senha estiver(em) errado(s) -->
+            <span id="erro">O e-mail ou senha inserido(s) está(ão) incorreto(s)</span>
+
+          </div>
+    
+          <div class="Divisao"></div> <!-- Divisão no meio da container -->
+    
+          <span id="seuEmail">Informe seu e-mail: <input type="text" id="email_input"></span>
+          <span id="seuUsername">Escolha seu Username: <input type="text" id="username_input"></span>
+          <span id="suaSenha1">Cadastre sua senha: <input type="password" id="senha1_input"></span>
+          <span id="suaSenha2">Confirme sua senha: <input type="password" id="senha2_input"></span>
+          <select id="slectEscolhaPokemon"> <!-- escolher qual o Pokémon que o usuario mais gosta dentre as opções-->
+            <option value="op0">Escolha</option>
+            <option value="op1">Annihilape</option>
+            <option value="op2">Shuclke</option>
+            <option value="op3">Mimikyu</option>
+            <option value="op4">Garchomp </option>
+            <option value="op5">Greninja</option>
+            <option value="op6">Gengar</option>
+            <option value="op7">Charizard</option>
+            <option value="op8">Lucario</option>
+            <option value="op9">Eevee</option>
+            <option value="op10">Pikachu</option>
+            <option value="op11">outro</option>
+          </select>
+          <span><button id="acessarbut" onclick="cadastrar()">Cadastre-se</button></span> <!--Botão "Acessar" presente na página -->
+          <div id="mensagem_erro"></div>
+          <div id="divAguardar"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+    
+    
+
+  <footer class="footer">
+    <div class="container">
+      <ul>
+        <h3>Link</h3>
+        <a href="index.html">Home</a><br>
+        <a href="login.html">Faça seu Login já!</a><br>   
+        <a href="cadastro.html">Cadastro-se já!</a><br>
+    </ul>
+
+    <ul>
+        <h3>Contatos</h3>
+            <p>11 95800-9686</p>
+            <p>Annihi_Master@outlook.com</p>
+            <p>Brasil</p>
+    </ul>
+    </div>
+  </footer>
+
+
+</body>
+
+
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var usernameVar = username_input.value;
+    var emailVar = email_input.value;
+    var senha1Var = senha1_input.value;
+    var senha2Var = senha2_input.value;
+    var contem_arroba = emailVar.indexOf('@');
+    var contem_ponto = emailVar.indexOf('.');
+    var slectEscolhaPokemonVar = slectEscolhaPokemon.value;
+    // Username
+    if(usernameVar.length < 1){
+      mensagem_erro.innerHTML =
+        "O Username necessita que haja mais de um caractere";
+      // finalizarAguardar();
+      return false;
+    }
+
+    // email
+    else if(contem_arroba < 0 && contem_ponto < 0){
+      mensagem_erro.innerHTML =
+        `Emil inválido. Precisa conter "@" e ""."`;
+      // finalizarAguardar();
+      return false;
+    }
+    // senha1 
+    else if(senha1Var.length <= 6){
+      mensagem_erro.innerHTML =
+        "Senha muito pequena. Mínimo 7 dígitos";
+      // finalizarAguardar();
+      return false;
+    }
+    // senha e confirmação de senha
+    else if(senha2Var != senha1Var){
+      mensagem_erro.innerHTML =
+        "A confirmação da senha está diferente da senha";
+      // finalizarAguardar();
+      return false;
+    }
+    else if (
+      usernameVar == "" ||
+      emailVar == "" ||
+      senha1Var == "" ||
+      senha2Var == "" ||
+      slectEscolhaPokemonVar == "op0"
+    ) {
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      // finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        usernameServer: usernameVar,
+        emailServer: emailVar,
+        senha1Server: senha1Var,
+        slectEscolhaPokemonServer: slectEscolhaPokemonVar,
+
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+    
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          // finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tela de Login</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="formulario_login.css">
+    <link rel="icon" href="imagens/logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+
+    <!--Header-->
+
+    <body style="font-family: 'Inter', sans-serif;">
+
+  
+        <div class="LoginPage"> <!-- Div que representa a página inteira -->
+         
+          <div class="container"> <!-- Retângulo que contém tudo dentro dele -->
+            <img src="imagens/logo.png" class="primeLogo">
+            <div class="section" style="visibility: hidden;" id="section"> <!-- Seção escondida que apresenta erro caso login ou senha estiver(em) errado(s) -->
+              <span id="erro">O e-mail ou senha inserido(s) está(ão) incorreto(s)</span>
+            </div>
+            <div class="Divisao"></div> <!-- Divisão no meio da container -->
+            <span id="seuUsername">Sua Username: <input type="text" id="username_input"></span>
+            <span id="suasenha">Sua senha: <input type="password" id="senha_input"></span>
+            <span id="lembrar"><input type="checkbox" id="checklembrar"> Lembrar minha identificação de usuário</span>
+            <div><button id="acessarbut" onclick="login()">Acessar</button></div> <!-- Botão "Acessar" presente na página --> <br>  
+            <div id="mensagem_erro"></div>
+            <div id="divAguardar"></div> <br>
+            <div><button id="esqueceubut" onclick="recuperar()"><a href="cadastro.html">Esqueceu o usuário ou a senha?</a></button></div> <!-- Botão para recuperação de senha -->
+          </div>
+        </div>
+
+      
+        <footer class="footer">
+          <div class="container">
+            <ul>
+              <h3>Link</h3>
+              <a href="index.html">Home</a><br>
+              <a href="login.html">Faça seu Login já!</a><br>   
+              <a href="cadastro.html">Cadastro-se já!</a><br>
+          </ul>
+      
+          <ul>
+              <h3>Contatos</h3>
+                  <p>11 95800-9686</p>
+                  <p>Annihi_Master@outlook.com</p>
+                  <p>Brasil</p>
+          </ul>
+          </div>
+        </footer>
+      
+
+</body>
+
+</html>
+
+<script>
+
+
+    function login() {
+        aguardar();
+
+        var usernameVar = username_input.value;
+        var senhaVar = senha_input.value;
+
+        if (usernameVar == "" || senhaVar == "") {
+            mensagem_erro.innerHTML = "Preencha todos so campos em branco";
+            // finalizarAguardar();
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", usernameVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: usernameVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.USERNAME_USUARIO = json.username;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.SELECTESCOLHAPOKEMON = JSON.stringify(json.slectEscolhaPokemon)
+
+                    setTimeout(function () {
+                        window.location = "escDash.html"; //linkar com a dashbord
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>

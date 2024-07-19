@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tênis Clube SPTECH</title>
+  <style>
+    body {
+      display: flex;
+      align-items: stretch;
+    }
+
+    body div:first-child,
+    body div:nth-of-type(2) {
+      padding: 8px;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+    }
+
+    body div:nth-of-type(2) {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    
+        <select id="tipoDefensor"> <!-- escolher qual o elemento que irá defender o ataque-->
+            <option value="op0">Escolha seu Pokémon</option>
+            <option value="op1">Normal / Normal</option>
+            <option value="op2">Eletrico / Electric</option>
+            <option value="op3">Lutador / Fighting</option>
+            <option value="op4">Voador / Flying</option>
+            <option value="op5">Pedra / Rcok</option>
+            <option value="op6">Sombrio / Dark</option>
+            <option value="op7">Fogo / Fire</option>
+            <option value="op8">Planta / Grass</option>
+            <option value="op9">Venenoso / Poison</option>
+            <option value="op10">Psiquico / Psychic</option>
+            <option value="op11">Fantasma / Ghost</option>
+            <option value="op12">Metal / Steel</option>
+            <option value="op13">Águs / Water</option>
+            <option value="op14">Gelo / Ice</option>
+            <option value="op15">Terra / Ground</option>
+            <option value="op16">Inseto / Bug</option>
+            <option value="op17">Dragão / Dragon</option>
+            <option value="op18">Fada / Fairy</option>
+          </select>
+
+          VS
+
+
+        <select id="tipoDefensor"> <!-- escolher qual o elemento que irá defender o ataque-->
+            <option value="op0">Escolha seu Pokémon</option>
+            <option value="op1">Normal / Normal</option>
+            <option value="op2">Eletrico / Electric</option>
+            <option value="op3">Lutador / Fighting</option>
+            <option value="op4">Voador / Flying</option>
+            <option value="op5">Pedra / Rcok</option>
+            <option value="op6">Sombrio / Dark</option>
+            <option value="op7">Fogo / Fire</option>
+            <option value="op8">Planta / Grass</option>
+            <option value="op9">Venenoso / Poison</option>
+            <option value="op10">Psiquico / Psychic</option>
+            <option value="op11">Fantasma / Ghost</option>
+            <option value="op12">Metal / Steel</option>
+            <option value="op13">Águs / Water</option>
+            <option value="op14">Gelo / Ice</option>
+            <option value="op15">Terra / Ground</option>
+            <option value="op16">Inseto / Bug</option>
+            <option value="op17">Dragão / Dragon</option>
+            <option value="op18">Fada / Fairy</option>
+          </select>
+
+
+    <button onclick="Batalhar()">Batalhar</button>
+
+    <h3>Informe as partidas que deseja relembrar</h3>
+
+    <label for="input_inicio_intervalo">Início:</label>
+    <input id="input_inicio_intervalo" type="number" />
+    <label for="input_fim_intervalo">Fim:</label>
+    <input id="input_fim_intervalo" type="number" />
+
+    <button onclick="relembrar_partidas()">Relembrar</button>
+  </div>
+
+  <div>
+    <h3>Painel</h3>
+    <div id="div_painel"></div>
+  </div>
+
+  <script>
+    var lista_partidas = [];
+
+    function realizar_partida() {
+      var qtd_partidas = document.getElementById("input_qtd_partidas").value;
+      var div_painel = document.getElementById("div_painel");
+      div_painel.innerHTML = "";
+
+      if (qtd_partidas <= 0 || qtd_partidas == "") {
+        alert("Número de partidas inválido");
+        return;
+      }
+
+      for (var i = 1; i <= qtd_partidas; i++) {
+        var min = 1;
+        var max = 10;
+        var intervalo = max - min;
+        var total_jogador1 = Math.floor(Math.random() * intervalo + min);
+        var total_jogador2 = Math.floor(Math.random() * intervalo + min);
+
+        lista_partidas.push({
+          rodada: i,
+          jogador1: total_jogador1,
+          jogador2: total_jogador2
+        });
+
+        div_painel.innerHTML += `Rodada: ${i} <br> Jogador 1: ${total_jogador1} <br> Jogador 2: ${total_jogador2} <br><br>`;
+      }
+    }
+
+    function relembrar_partidas() {
+      var inicio = parseInt(document.getElementById("input_inicio_intervalo").value);
+      var fim = parseInt(document.getElementById("input_fim_intervalo").value);
+      var div_painel = document.getElementById("div_painel");
+      div_painel.innerHTML = "";
+
+      if (inicio <= 0 || fim <= 0 || inicio > fim || fim > lista_partidas.length) {
+        alert("Intervalo inválido");
+        return;
+      }
+
+      for (var i = inicio - 1; i < fim; i++) {
+        var partida = lista_partidas[i];
+        div_painel.innerHTML += `Rodada: ${partida.rodada} <br> Jogador 1: ${partida.jogador1} <br> Jogador 2: ${partida.jogador2} <br><br>`;
+      }
+    }
+  </script>
+</body>
+</html>

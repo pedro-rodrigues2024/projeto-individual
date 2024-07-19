@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  background-size: cover;
+}
+
+
+.TiagensPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  
+}
+
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul a {
+  color: rgb(206, 13, 13);
+  margin: 0 25px;
+  text-transform: uppercase;
+  font-size: 14px;
+  display: block;
+  text-decoration: none;
+}
+
+.navbar ul a::after {
+  content: "";
+  background-color: #15616D;
+  height: 3px;
+  width: 0%;
+  display: block;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+
+.navbar ul a:hover::after {
+  width: 100%;
+}
+
+.logo-navbar {
+  width: 100px;
+  height: 100px;
+}
+
+.Divisao {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 20px 0;
+}
+
+select {
+    width: 300px;
+    height: 40px;
+    margin-bottom: 20px;
+
+    margin-left: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none;
+    padding: 0 10px;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #ffffff;
+  }
+  
+  /* Cores para os options */
+  
+  #tipoAtacante option[value="normal"] { background-color: #f2ebab; color: #000000;}
+  #tipoAtacante option[value="eletrico"] { background-color: #ffff00; color: #000000; }
+  #tipoAtacante option[value="lutador"] { background-color: #a00000; color: #000000; }
+  #tipoAtacante option[value="voador"] { background-color: #07c5ff; color: #000000;}
+  #tipoAtacante option[value="pedra"] { background-color: #b8ad17; color: #000000; }
+  #tipoAtacante option[value="sombrio"] { background-color: #000000; color: #fff; }
+  #tipoAtacante option[value="fogo"] { background-color: #ff6200; color: #000000; }
+  #tipoAtacante option[value="planta"] { background-color: #0bd63a; color: #000000; }
+  #tipoAtacante option[value="venenoso"] { background-color: #9a0eb0; color: #000000; }
+  #tipoAtacante option[value="psiquico"] { background-color: #be0078; color: #000000;}
+  #tipoAtacante option[value="fantasma"] { background-color: #4d0758; color: #ffffff; }
+  #tipoAtacante option[value="metal"] { background-color: #acaba8; color: #000000; }
+  #tipoAtacante option[value="agua"] { background-color: #001aff; color: #000000; }
+  #tipoAtacante option[value="gelo"] { background-color: #9eeefa; color: #000000; }
+  #tipoAtacante option[value="terra"] { background-color: #edc447; }
+  #tipoAtacante option[value="inseto"] { background-color: #7fdb23; color: #000000; }
+  #tipoAtacante option[value="dragao"] { background-color: #6610f2; color: #000000; }
+  #tipoAtacante option[value="fada"] { background-color: #ff00fb; color: #000000; }
+  
+  #tipoDefensor option[value="normal"] { background-color: #f2ebab; color: #000000;}
+  #tipoDefensor option[value="eletrico"] { background-color: #ffff00; color: #000000; }
+  #tipoDefensor option[value="lutador"] { background-color: #a00000; color: #000000; }
+  #tipoDefensor option[value="voador"] { background-color: #07c5ff; color: #000000;}
+  #tipoDefensor option[value="pedra"] { background-color: #b8ad17; color: #000000; }
+  #tipoDefensor option[value="sombrio"] { background-color: #000000; color: #fff; }
+  #tipoDefensor option[value="fogo"] { background-color: #ff6200; color: #000000; }
+  #tipoDefensor option[value="planta"] { background-color: #0bd63a; color: #000000; }
+  #tipoDefensor option[value="venenoso"] { background-color: #9a0eb0; color: #000000; }
+  #tipoDefensor option[value="psiquico"] { background-color: #be0078; color: #000000;}
+  #tipoDefensor option[value="fantasma"] { background-color: #4d0758; color: #ffffff; }
+  #tipoDefensor option[value="metal"] { background-color: #acaba8; color: #000000; }
+  #tipoDefensor option[value="agua"] { background-color: #001aff; color: #000000; }
+  #tipoDefensor option[value="gelo"] { background-color: #9eeefa; color: #000000; }
+  #tipoDefensor option[value="terra"] { background-color: #edc447; }
+  #tipoDefensor option[value="inseto"] { background-color: #7fdb23; color: #000000; }
+  #tipoDefensor option[value="dragao"] { background-color: #6610f2; color: #000000; }
+  #tipoDefensor option[value="fada"] { background-color: #ff00fb; color: #000000; }
+  
+
+  tipoDefensor
+
+button {
+  width: 120px;
+  height: 40px;
+  margin-left: 50px;
+  background-color: #15616d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4f8c95;
+}
+
+.container-tipo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+  }
+
+.tipo {
+  background-color: #fff;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  height: 200px;
+  background-color: #15616D;
+  padding: 10px;
+
+}
+
+.footer .container {
+  display: flex;
+  color: white;
+  justify-content: space-between;
+}
+
+.footer .container ul {
+  width: 25%;
+}
+
+.footer .container h3 {
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.footer .container li {
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+.footer .container a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+
+.footer .container p {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}

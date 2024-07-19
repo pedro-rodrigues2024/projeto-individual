@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Batalha</title>
+    <link rel="stylesheet" href="formulario_luta-tipo.css">
+</head>
+<body>
+    <div class="TiagensPage"> <!-- Div que representa a página inteira -->
+        <div class="header">
+          <div class="container-topo">
+            <nav>
+              <div class="navbar">
+                <a href="index.html">
+                  <img src="imagens/logo.png" alt="Logo" class="logo-navbar">
+                </a>
+                <ul class="ul">
+                  <a href="index.html">PrimeBlog</a> </li>
+                  <li>|</li>
+                  <li id="cadastro">  <a class="btn" href="cadastro.html">Cadastro</a> </li>
+                  <li>|</li>
+                  <li id="login"> <a class="btn" href="login.html">Entrar</a> </li>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="Divisao"></div> <!-- Divisão no meio da container -->
+
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <div id="image-display1">Atacante</div>
+            <div id="atacante-hp" class="health-bar"></div>
+            <div>
+                <button onclick="atacar('ataque1')">Ataque 1</button>
+                <button onclick="atacar('ataque2')">Ataque 2</button>
+                <button onclick="atacar('ataque3')">Ataque 3</button>
+                <button onclick="atacar('ataque4')">Ataque 4</button>
+            </div>
+        </div>
+        <img src="imagens/vs.jpeg" style="align-self: center;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <div id="image-display2">Defensor</div>
+            <div id="defensor-hp" class="health-bar"></div>
+            <div>
+                <button onclick="defender('ataque1')">Ataque 1</button>
+                <button onclick="defender('ataque2')">Ataque 2</button>
+                <button onclick="defender('ataque3')">Ataque 3</button>
+                <button onclick="defender('ataque4')">Ataque 4</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>Ações da Batalha</h3>
+        <ul id="acoes-batalha"></ul>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        #image-display1, #image-display2{
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            margin: 10px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .health-bar {
+            width: 100%;
+            height: 20px;
+            background-color: green;
+            margin: 5px 0;
+        }
+        
+        button {
+            margin: 5px;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    
+  <div class="footer">
+    <div class="container">
+      <ul>
+        <h3>Link</h3>
+        <a href="index.html">Home</a><br>
+        <a href="login.html">Faça seu Login já!</a><br>
+        <a href="cadastro.html">Cadastro-se já!</a><br>
+      </ul>
+      <ul>
+        <h3>Contatos</h3>
+        <p>11 95800-9686</p>
+        <p>Annihi_Master@outlook.com</p>
+        <p>Brasil</p>
+      </ul>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var atacante = urlParams.get('atacante');
+        var defensor = urlParams.get('defensor');
+
+        var tipoImagens = {
+            "normal": "poke-pasta/normal.png",
+            "eletrico": "poke-pasta/elétrico.png"
+            // Adicione outras imagens aqui
+        };
+
+        document.getElementById('image-display1').style.backgroundImage = 'url(' + tipoImagens[atacante] + ')';
+        document.getElementById('image-display2').style.backgroundImage = 'url(' + tipoImagens[defensor] + ')';
+
+        var hpAtacante = 100;
+        var hpDefensor = 100;
+        var acoesBatalha = [];
+
+        function adicionarAcao(acao) {
+            acoesBatalha.push(acao);
+            var acoesElement = document.getElementById('acoes-batalha');
+            var li = document.createElement('li');
+            li.textContent = acao;
+            acoesElement.appendChild(li);
+        }
+
+        function atacar(ataque) {
+            var dano = Math.floor(Math.random() * 20) + 1;
+            hpDefensor -= dano;
+            document.getElementById('defensor-hp').style.width = hpDefensor + '%';
+            adicionarAcao(`Atacante usou ${ataque} e causou ${dano} de dano!`);
+
+            if (hpDefensor <= 0) {
+                adicionarAcao('Atacante venceu!');
+                salvarResultado('Atacante');
+                resetarBatalha();
+            }
+        }
+
+        function defender(ataque) {
+            var dano = Math.floor(Math.random() * 20) + 1;
+            hpAtacante -= dano;
+            document.getElementById('atacante-hp').style.width = hpAtacante + '%';
+            adicionarAcao(`Defensor usou ${ataque} e causou ${dano} de dano!`);
+
+            if (hpAtacante <= 0) {
+                adicionarAcao('Defensor venceu!');
+                salvarResultado('Defensor');
+                resetarBatalha();
+            }
+        }
+
+        function salvarResultado(vencedor) {
+            var historicoBatalhas = JSON.parse(localStorage.getItem('historicoBatalhas')) || [];
+            var campeoes = JSON.parse(localStorage.getItem('campeoes')) || [];
+            historicoBatalhas.push(`Atacante (${atacante}) vs Defensor (${defensor}) - Vencedor: ${vencedor}`);
+            campeoes.push(vencedor);
+            localStorage.setItem('historicoBatalhas', JSON.stringify(historicoBatalhas));
+            localStorage.setItem('campeoes', JSON.stringify(campeoes));
+        }
+
+        function resetarBatalha() {
+            hpAtacante = 100;
+            hpDefensor = 100;
+            document.getElementById('atacante-hp').style.width = '100%';
+            document.getElementById('defensor-hp').style.width = '100%';
+        }
+    </script>
+

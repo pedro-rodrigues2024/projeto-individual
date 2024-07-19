@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tipagens</title>
+  <link rel="stylesheet" href="formulario_tipagens.css">
+</head>
+
+<body style="font-family: Inter;">
+
+  <div class="TiagensPage"> <!-- Div que representa a página inteira -->
+
+    <div class="header">
+      <div class="container-topo">
+          <nav>
+              <div class="navbar">
+                  <a href="index.html">
+                    <img src="imagens/logo.png" alt="Logo" class="logo-navbar">
+                  </a>
+                    <ul class="ul">
+                      <a href="index.html">PrimeBlog</a> </li>
+                      <li>|</li>
+                      <li id="cadastro">  <a class="btn" href="cadastro.html">Cadastro</a> </li>
+                      <li>|</li>
+                      <li id="login"> <a class="btn" href="login.html">Entrar</a> </li>
+                </div>
+      
+          </nav>
+      </div>
+    </div>
+
+
+    <div class="container"> <!-- Retângulo que contém tudo dentro dele -->
+      <!--<img src="img/logo.png" class="logo"> -->
+    </div>
+
+    <div class="Divisao"></div> <!-- Divisão no meio da container -->
+
+    <div style="display: flex; justify-content: center; display: contents;"> 
+      <div style="display: flex;">
+        <select id="tipoAtacante"> <!-- escolher qual o elemento que irá atacar-->
+          <option value="op0">Escolha seu tipo</option>
+          <option value="op1">Normal / Normal</option>
+          <option value="op2">Eletrico / Electric</option>
+          <option value="op3">Lutador / Fighting</option>
+          <option value="op4">Voador / Flying</option>
+          <option value="op5">Pedra / Rcok</option>
+          <option value="op6">Sombrio / Dark</option>
+          <option value="op7">Fogo / Fire</option>
+          <option value="op8">Planta / Grass</option>
+          <option value="op9">Venenoso / Poison</option>
+          <option value="op10">Psiquico / Psychic</option>
+          <option value="op11">Fantasma / Ghost</option>
+          <option value="op12">Metal / Steel</option>
+          <option value="op13">Águs / Water</option>
+          <option value="op14">Gelo / Ice</option>
+          <option value="op15">Terra / Ground</option>
+          <option value="op16">Inseto / Bug</option>
+          <option value="op17">Dragão / Dragon</option>
+          <option value="op18">Fada / Fairy</option>
+        </select>
+  
+        <select id="tipoDefensor"> <!-- escolher qual o elemento que irá defender o ataque-->
+          <option value="op0">Escolha seu tipo</option>
+          <option value="op1">Normal / Normal</option>
+          <option value="op2">Eletrico / Electric</option>
+          <option value="op3">Lutador / Fighting</option>
+          <option value="op4">Voador / Flying</option>
+          <option value="op5">Pedra / Rcok</option>
+          <option value="op6">Sombrio / Dark</option>
+          <option value="op7">Fogo / Fire</option>
+          <option value="op8">Planta / Grass</option>
+          <option value="op9">Venenoso / Poison</option>
+          <option value="op10">Psiquico / Psychic</option>
+          <option value="op11">Fantasma / Ghost</option>
+          <option value="op12">Metal / Steel</option>
+          <option value="op13">Águs / Water</option>
+          <option value="op14">Gelo / Ice</option>
+          <option value="op15">Terra / Ground</option>
+          <option value="op16">Inseto / Bug</option>
+          <option value="op17">Dragão / Dragon</option>
+          <option value="op18">Fada / Fairy</option>
+        </select>
+      </div>      
+
+    </div>
+
+    <div id="div_mensagem"></div> <br>
+
+    <div id="div_mensagem"></div> <br>
+
+    <button id="lutarbut" onclick="lutar()">Verificar</button>
+
+    <a href="luta-tipo.html"><button onclick="batalhaSimula()">Vamos ver como isso funciona em uma batalha?</button></a>
+
+
+
+    <img src="imagens/tipos.jpg" alt="">
+  
+    </div>
+    <section class="tipo">
+      <div class="container-tipo">
+        <div class="tipo-text">
+          <h2>Tipos em Pokémon</h2>
+            <h3>O que são esses <i>Tipos</i>?</h3>
+          <p>De forma resumida, os tipos são propriedades de duas coisas: Pokémon e Movimentos (no caso, os que o Pokémon usa durante as batalhas). <br>
+            
+            Existem 20 tipos, com exceção do Estelar e o ???, os outros 18 tipos representam elementos clássicos da cultura, como água, fogo, terra, ar, plantas, etc. <br>
+            
+            Esses tipos determinam as forças e fraquezas de cada Pokémon, a quais eles resistem, quais eles sofrem mais penalidades, etc. <br>
+            
+            Cada Pokémon pode ter, no máximo, até dois tipos, o que resulta em 171 combinações diferentes de tipagens de Pokémon. Atualmente, 162 dessas combinações estão em uso, enquanto as outras 9 combinações possíveis (Pedra/Normal, Inseto/Normal, Metal/Normal, Gelo/Normal, Gelo/Venenoso, Terra/Fada, Pedra/Fantasma, Dragão/Inseto e Fogo/Fada) ainda não foram utilizadas. No entanto, existe a possibilidade de essas combinações serem usadas nos futuros jogos da franquia. <br> <br>
+
+            De forma mais aprofundada, os tipos/elementos usados em Pokémon são originários da energia do infinito presente no universo Pokémon, a qual os monstrinhos manipulam, exercendo sua vontade sobre ela para transformá-la em um movimento, geralmente de acordo com seu tipo. <br>
+            
+            Essa energia do infinito (de acordo com a 6ª geração de Pokémon) vem da força vital do Pokémon, o que também explica o surgimento das Mega Evoluções, a trama final dos jogos Pokémon X/Y, as evoluções, os efeitos Dynamax e Gigantamax, Z-moves e habilidades. No fim, pela lei da conservação de energia, essa energia não é criada nem destruída, apenas transformada; ou seja, essa mesma energia serve para tudo no mundo Pokémon. <br>
+            
+            Movimentos e a energia do infinito são parte do espectro de ondas e partículas, e o tipo dado ao Pokémon e seus movimentos depende da luz que ele está refletindo. Por isso, cada tipo tem uma cor que o representa, como o amarelo para o tipo elétrico e o cinza para o tipo metal. <br>
+            
+            Enquanto o Pokémon está em estado de ovo, ele absorve a energia do infinito ao seu redor para adquirir o tipo correspondente à luz refletida sobre ele. A capacidade do Pokémon de refletir e absorver o espectro de luz em até dois tipos é transferida de pai para filho na forma de herança genética enquanto está dentro do ovo. À medida que o Pokémon cresce, seu domínio e manipulação dessa energia aumentam, o que pode modificá-lo, seja adquirindo um novo movimento ou ganhando mais um tipo ao evoluir. <br> <br>
+
+            Dito isso, vamos ver um pouco sobre cada um dos 20 tipos em Pokémon.
+          </p> <br>
+        </div>
+      </div>
+    </section>
+
+    <section class="normal">
+      <div class="container-tipo">
+        <div class="nomral-text">
+          <h4>Tipo Normal</h4>
+          <p>
+
+            Sua temática engloba majoritariamente animais normais, como um gato, pássaro, cachorro, etc. 
+            Alguns Pokémon fogem um pouco dessa temática, mas vale a pena comentar sobre Porygon e sua linha evolutiva, que representam "algo feito por humanos", feito de "nenhum tipo", "o tipo sem cor". 
+            O Tipo Normal é o tipo que envolve todos os outros tipos. Pegando o conceito de luz explicado anteriormente na Energia do Infinito, ele é o espectro de luz branca, que dá origem às outras cores. Por isso, o Deus Pokémon Arceus é dessa tipagem, "o tipo que dá origem aos outros tipos".
+          
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="eletrico">
+      <div class="container-tipo">
+        <div class="eletrico-text">
+          <h4>Tipo Elétrico</h4>
+          <p>
+
+            Esse tipo, do qual o famoso Pikachu faz parte, consiste em magia de raios, manipulação e criação de eletricidade. 
+            Sua temática envolve principalmente velocidade; o super-herói Flash é um bom exemplo disso, pois ele corre tão rápido que gera eletricidade. 
+            O Pikachu, por ser um rato, e ratos serem animais velozes, faz sentido. Além disso, o magnetismo, a estática e as formas de gerar energia, em geral, são coisas e animais relacionados à velocidade e/ou eletricidade.
+          
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="lutador">
+      <div class="container-tipo">
+        <div class="lutador-text">
+          <h4>Tipo Lutador</h4>
+          <p>
+
+            Caracterizado por serem os mais agressivos, fortões e brigões, aqueles que vivem pelo combate, onde o campo de batalha é o lar deles, os diferentes tipos de artes marciais são bastante mencionados aqui, como Capoeira, Judô, Karatê, Sumo, etc. 
+            Bem como animais que colocamos para lutar entre si, como os galos de briga. Além disso, esse tipo faz referência aos "cavaleiros da justiça", os "heróis" do mundo Pokémon, juntamente com o tipo Inseto. Porém, nem todo lutador é um herói. Este tipo também faz referência aos esportes de maneira geral.
+
+
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="voador">
+      <div class="container-tipo">
+        <div class="voador-text">
+          <h4>Tipo Voador</h4>
+          <p>
+            
+            Este tipo é um pouco complicado de definir, pois antes do lançamento de Pokémon RGBY (Red, Green, Blue e Yellow), estava previsto o lançamento do “Tipo Pássaro” que nunca foi oficialmente lançado, embora ainda seja possível encontrar este tipo nos arquivos do jogo. 
+            Então, neste tipo, temos o envolvimento da maioria dos Pokémon pássaros que voam com a força de suas asas, os Pokémon que moldam e manipulam as correntes aéreas a seu favor (não necessariamente com o uso de asas), e aqueles que são apenas levados pelos ventos e precisam deles para viver e se locomover. 
+            Assim, temos, por um lado, os Pokémon que moldam o elemento ar à sua vontade, o controlado e manipulado, como fazem os dragões orientais, e, por outro lado, uma variedade de aves, mesmo que algumas delas não façam sentido voar, como o avestruz, e seres que apenas se deixam ser guiados pelos ventos do mundo.
+
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="pedra">
+      <div class="container-tipo">
+        <div class="pedra-text">
+          <h4>Tipo Pedra</h4>
+          <p>
+            
+            À primeira vista, é confuso que Pedra e Terra estejam separados, já que ambos fazem parte do mesmo contexto. 
+            No entanto, o tipo Pedra se refere aos Pokémon que são feitos de pedra ou têm pedra em alguma parte de sua composição, ou mesmo materiais duros como pedra. 
+            Alguns referenciam gemas ou minérios, e até mesmo fósseis. 
+            A temática dos Pokémon desse tipo não está clara. O único grupo de Pokémon que tem uma temática envolvendo o tipo Pedra são os Pokémon Fósseis. 
+            Esses são Pokémon que viveram há muito tempo, no que seria a época dos dinossauros no mundo Pokémon. 
+            Todos têm o tipo Pedra por referenciar seres muito antigos e pelos fósseis serem confundidos com pedras. 
+            Além disso, esses fósseis foram restaurados da forma que os humanos imaginam que esses Pokémon eram no passado, preenchendo as lacunas de DNA que não puderam ser restauradas, algo semelhante ao que acontece na franquia "Jurassic Park" e "Jurassic World".
+
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="sombrio">
+     <div class="container-tipo">
+        <div class="sombrio-text">
+         <h4>Tipo Sombrio</h4>
+          <p>
+
+            Os vilões do mundo Pokémon. 
+            Aqui é onde estão os Pokémon mais cruéis e maliciosos que podem existir, não necessariamente relacionados à magia das sombras ou à manipulação e criação de sombras, mas sim relacionados com as maldades que causam de forma deliberada. 
+            Isso não quer dizer que sejam totalmente malvados, mas suas próprias existências implicam em algo negativo, seja por necessidade própria, como causar poluição, roubar, caçar por diversão, estelionato, destruição ambiental, espécie invasiva, atacar qualquer um que invada seu território, ou causar pesadelos extremamente cruéis e violentos que podem matar o sonhador. 
+            No geral, não é algo muito específico, mas é algo que causa maldade, seja de forma direta ou indireta.
+
+          </p>
+       </div>
+      </div>
+    </section>
+
+
+    <section class="fogo">
+      <div class="container-tipo">
+        <div class="fogo-text">
+          <h4>Tipo Fogo</h4>
+          <p>  
+
+            Com certeza, um dos elementos mais populares fora do universo Pokémon é a manipulação e criação de chamas e calor, ou qualquer outra coisa associada ao fogo e calor, como lava 
+            (embora a lava não seja associada ao fogo, mas sim ao calor e pedras. Para um mundo onde os animais foram substituídos por criaturas com superpoderes, é aceitável associar fogo à lava, embora esteja incorreto). 
+             A temática envolve o "espírito flamejante", o que depende da personalidade do animal e da característica principal do objeto em que foi inspirado, como seres rápidos, animados, de força bruta, indomáveis e youkais cuja temática também seja o fogo.
+            Claro que o ambiente onde vivem adiciona muito mais repertório para um Pokémon ser deste elemento.
+           
+            </p>
+       </div>
+     </div>
+   </section>
+
+
+    <section class="planta">
+      <div class="container-tipo">
+       <div class="planta-text">
+         <h4>Tipo Planta</h4>
+         <p>
+
+          Magia de planta, criação e manipulação da vida vegetal. 
+          Sua temática envolve principalmente plantas, como uma flor, uma planta carnívora, uma árvore, mas também inclui animais que vivem nas árvores e em ambientes predominantemente arbóreos, como matas densas e fechadas, grandes campinas verdes, etc. 
+          Além disso, fungos também estão incluídos no Tipo Planta (embora não sejam plantas, mas é a mesma justificativa para a lava ter relação com o fogo; o que vale é a aproximação temática, já que visualmente se assemelham).
+        
+        </p>
+        </div>
+     </div>
+    </section>
+
+
+   <section class="venenoso">
+     <div class="container-tipo">
+       <div class="venenoso-text">
+         <h4>Tipo Venenoso</h4>
+         <p>
+          
+          É bem autoexplicativo: animais que produzem ou usam veneno para caça e abate de presas. 
+          Também inclui a temática de plantas venenosas, gases venenosos, e produtores de diferentes ácidos corrosivos, tanto animais como objetos. 
+          Um fato curioso sobre esse tipo é que, antes da criação do tipo Sombrio, ele era considerado o “tipo vilão” do mundo Pokémon, por causarem malefícios tanto para o ambiente de maneira geral quanto para os que vivem nesse ambiente.
+
+         </p>
+        </div>
+     </div>
+   </section>
+
+
+    <section class="psiquico">
+     <div class="container-tipo">
+       <div class="psiquico-text">
+         <h4>Tipo Psiquico</h4>
+         <p>
+        
+          De forma geral, são os Pokémon que têm uma conexão com a mente, seja por meio de controle mental, inteligência, clarividência, ter mais de um cérebro ou até mesmo acuidade mental com o corpo. 
+          Mas também existem Pokémon que vão além do que são, seja pela capacidade de fazer magia, aqueles que têm conexão com a forma de vida que são e com a cosmologia em geral, como deuses interdimensionais que viajam pelo espaço espalhando luz pelo universo, alienígenas com o poder de corromper o DNA de um planeta inteiro, a criatura usada pelo próprio Deus para reescrever a realidade do multiverso Pokémon, ou até mesmo um pássaro que dança hula.
+        
+        </p>
+        </div>
+     </div>
+   </section>
+
+
+   <section class="fantasma">
+     <div class="container-tipo">
+       <div class="fantasma-text">
+         <h4>Tipo Fantasma</h4>
+         <p>
+
+          Almas penadas, poltergeists, assombrações, maldições, youkais, etc. 
+          São as forças espirituais que vagam pelo mundo Pokémon até adquirirem uma forma e se tornarem um Pokémon, seja possuindo um boneco ou a casca de uma cigarra. 
+          Eles não estão necessariamente mortos, apenas podem estar conectados de forma direta ao mundo espiritual. De forma geral, são seres paradoxais (não como os Pokémon Paradoxo), pois nascem da morte e morrem pela morte, gerando um paradoxo sobre como surgem de fato no mundo Pokémon. 
+          No entanto, é possível responder a essa pergunta vendo a Pokédex deles ou conhecendo a inspiração por trás deles. 
+          A maioria dos Pokémon que fazem parte do tipo Fantasma têm as descrições mais macabras na Pokédex. 
+          Afinal, o jogo é de origem japonesa, e inspiração para a criação de Pokémon baseados fortemente em fantasmas é o que não falta, embora não se restrinja apenas ao folclore japonês. 
+          Esses Pokémon não são necessariamente malignos, mas foram as circunstâncias que os tornaram o que são hoje.
+
+         </p>
+       </div>
+     </div>
+    </section>
+
+
+    <section class="metal">
+      <div class="container-tipo">
+        <div class="metal-text">
+          <h4>Tipo Metal</h4>
+          <p>
+            
+            Os Pokémon aqui têm metais presentes em seus corpos de alguma forma, seja porque são parte de sua composição, se alimentam de metal, 
+            possuem uma casca ou couro duro como ferro, ou porque o objeto em que foram baseados tem uma forte ligação com metal, como uma broca, uma espada ou uma engrenagem.
+
+          </p>
+        </div>
+     </div>
+    </section>
+
+
+    <section class="agua">
+     <div class="container-tipo">
+       <div class="agua-text">
+          <h4>Tipo Água</h4>
+          <p>
+
+            Mais um para a lista de "tipos mais fáceis de explicar" é a magia de água, manipulação e criação de água. 
+            Sua temática envolve principalmente animais e objetos relacionados de alguma forma à água, seja porque vivem na água, sua função é exercida na água (no caso de objetos), ou caçam na água, como peixes, crocodilianos, sapos, tubarões e bóias de piscina. 
+            Apenas alguns monstrinhos fogem dessa temática, mas são casos específicos, como os lendários deste elemento.
+
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+   <section class="gelo">
+     <div class="container-tipo">
+        <div class="gelo-text">
+           <h4>Tipo Gelo</h4>
+         <p>
+
+          Sei que é confuso ter Gelo e Água separados como se fossem algo diferente, bem como Terra e Pedra mencionados anteriormente, afinal Gelo é um estado da matéria da Água. 
+          Mas assim como existe magia de Gelo, criação e manipulação de gelo, e magia de Água separadas em outras mídias como algo distinto, aqui também é o mesmo. 
+          Sua temática envolve mais a personalidade do que uma tipagem simples, mas, no geral, são animais que habitam locais frios ou têm alguma relação com frio/gelo. 
+          Isso inclui objetos, como uma geladeira.
+
+        </p>
+        </div>
+      </div>
+    </section>
+
+
+   <section class="terra">
+     <div class="container-tipo">
+       <div class="terra-text">
+         <h4>Tipo Terra</h4>
+         <p>
+
+          O tipo Terra engloba Pokémon que vivem dentro da terra ou que precisam dela para viver, como aqueles baseados em toupeiras. 
+          Outros são, literalmente, feitos de terra de forma geral, como o famoso golem de barro ou um castelo de areia vivo. 
+          Alguns outros vivem em ambientes diferentes, mas ainda estão envolvidos no contexto de terra, como desertos e pântanos, e há aqueles que são feitos de terra, mas vivem entre as pedras.
+         
+        </p>
+       </div>
+     </div>
+    </section>
+
+
+    <section class="inseto">
+     <div class="container-tipo">
+       <div class="inseto-text">
+         <h4>Tipo Inseto</h4>
+         <p>
+          
+          Biologicamente falando, mesmo não sendo uma autoridade em biologia, este tipo deveria ser dividido em pelo menos três grupos: insetos, aracnídeos e crustáceos. 
+          No entanto, é baseado em animais semelhantes a insetos em termos de aparência, onde, na mente de uma criança, todos esses grupos seriam chamados de “insetos”. 
+          Além da temática de insetos neste tipo, também há a temática de heróis. Este tipo, além de fazer referência ao hobby do criador de caçar e colecionar insetos, também faz referência aos heróis da franquia Kamen Rider do gênero tokusatsu, que são super-heróis que usam armaduras baseadas em insetos. 
+          Por essa inspiração, eles são considerados os “heróis do mundo Pokémon”, juntamente com o tipo Lutador.
+
+         </p>
+       </div>
+     </div>
+    </section>
+
+
+   <section class="dragao">
+     <div class="container-tipo">
+        <div class="dragao-text">
+          <h4>Tipo Dragão</h4>
+          <p>
+
+            Por muito tempo, foram considerados os Pokémon com o status mais poderoso, onde seus poderes estão diretamente ligados à energia do infinito, utilizando-a de forma bruta e descontrolada, sendo feras selvagens e temidas por seu potencial de destruição. 
+            Eles conseguem utilizar o que mais se assemelha à magia no mundo Pokémon e transmutá-la para um tipo elemental ou usá-la de forma crua. 
+            Além da temática de dragões e seres místicos, sua temática é serem os Pokémon mais raros e difíceis de serem encontrados, e por isso, os mais fortes. 
+            No geral, são baseados em répteis e em dragões de outras mitologias.
+
+          </p>
+        </div>
+     </div>
+    </section>
+
+
+   <section class="fada">
+      <div class="container-tipo">
+        <div class="fada-text">
+         <h4>Tipo Fada</h4>
+         <p>
+
+          No geral, eles são inspirados fortemente em criaturas de contos de fadas e conectados à natureza como seus guardiões, seres capazes de moldar a natureza ao seu favor interagindo diretamente com a Energia do Infinito. 
+          Aprendem a moldá-la e torná-la mais maleável para suas necessidades, tornando-se íntimos dessa energia conforme refinam esse poder e o moldam em um elemento específico, ao ponto onde não é mais capaz de causar dano a eles. 
+          Tudo isso porque conseguem se adaptar e viver em lugares onde essa energia transborda em grande escala. 
+          Outro paralelo com o tipo Fada é que eles seriam o elemento “luz”, contrários e opostos às maldades escondidas nas sombras. 
+          Além disso, são apenas os Pokémon fofinhos.
+
+         </p>
+       </div>
+     </div>
+    </section>
+
+   <section class="semTipo">
+      <div class="container-tipo">
+       <div class="semTipo-text">
+          <h4>Tipo ???</h4>
+          <p>
+            
+            Mesmo tendo sido associado a um tipo específico de movimento, nomeadamente o movimento "Curse", e não a um Pokémon de maneira conceitual, isso ocorreu por motivos de balanceamento dentro do jogo, uma vez que não possui fraquezas ou resistências. No entanto, na teoria, o único Pokémon que teria esse tipo seria Arceus, já que ele é considerado o criador do conceito de tipagem. <br>
+
+            O movimento Curse foi designado para esse tipo porque, dependendo do Pokémon que o usasse, um efeito diferente era aplicado ao golpe. <br>
+            
+            Esse tipo foi removido a partir dos jogos da 5ª geração (Pokémon Black/White e Pokémon Black 2/White 2), e com isso, Curse foi reclassificado como um movimento do tipo Fantasma. <br>
+            
+            Quando foi removido, um novo conceito foi introduzido, o Efeito STAB. Basicamente, se um Pokémon, por exemplo, do tipo Fogo, usar um golpe do tipo Lutador, o dano será equivalente ao dano do golpe. No entanto, se um Pokémon do tipo Fogo usar um golpe de Fogo, esse ataque terá um adicional de 50% no seu dano. Isso se aplica a qualquer tipo. <br>
+            
+            Apesar de seu desaparecimento, o conceito e lógica por trás do tipo ??? ainda permanecem um mistério. <br>
+          
+          </p>
+       </div>
+     </div>
+   </section>
+
+    <section class="estelar">
+     <div class="container-tipo">
+       <div class="estelar-text">
+          <h4>Tipo Estelar</h4>
+          <p>
+
+            Introduzido na 9ª Geração de jogos, este tipo não tem um Pokémon que o represente diretamente, pois é acessado apenas através da teracristalização pela mecânica Terastal.
+            Podemos citar apenas um único representante deste tipo: o Pokémon Terapagos, que criou este tipo. Há teorias que sugerem que este tipo é o precursor dos demais tipos da franquia, mas nada está confirmado e também não se sabe quando isso se originou. Pode ter sido criado junto com a formação do universo Pokémon ou após a criação da vida na Terra. Isso torna difícil colocar tanto o tipo quanto o lendário em uma linha do tempo fixa.
+            Os Pokémon que mudam para este tipo mantêm suas fraquezas, resistências e imunidades anteriores à teracristalização.
+            Na página que fala especificamente sobre as mecânicas de batalha, é melhor abordar o que acontece com um Pokémon que se torna do tipo estelar.
+            
+          </p>
+       </div>
+     </div>
+   </section>
+
+  </div>
+  <div class="footer">
+    <div class="container">
+        <ul>
+            <h3>Link</h3>
+            <a href="index.html">Home</a><br>
+            <a href="login.html">Faça seu Login já!</a><br>   
+            <a href="cadastro.html">Cadastro-se já!</a><br>
+
+        </ul>
+
+        <ul>
+            <h3>Contatos</h3>
+                <p>11 95800-9686</p>
+                <p>Annihi_Master@outlook.com</p>
+                <p>Brasil</p>
+        </ul>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+</body>
+
+</html>
+<script src="tipagens.js">
+  var tipoAtacante = tipoAtacante.value;
+  var tipoDefensor = tipoDefensor.value;
+</script>
+
