@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vantegam e desvantagens na pratica</title>
+  <link rel="stylesheet" href="formulario_luta-tipo.css">
+</head>
+
+<body style="font-family: Inter;">
+  <div class="TiagensPage">
+    <div class="header">
+      <div class="container-topo">
+        <nav>
+          <div class="navbar">
+            <a href="index.html">
+              <img src="imagens/logo.png" alt="Logo" class="logo-navbar">
+            </a>
+            <ul class="ul">
+              <a href="index.html">PrimeBlog</a> </li>
+              <li>|</li>
+              <li id="cadastro">  <a class="btn" href="cadastro.html">Cadastro</a> </li>
+              <li>|</li>
+              <li id="login"> <a class="btn" href="login.html">Entrar</a> </li>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+    </div>
+
+    <div class="Divisao"></div>
+    <div class="banner">
+      <div class="container">
+        <div class="caixa_formulario">
+          <div class="formulario">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="tipagens.html"><button onclick="voltar()">Tipos</button></a>
+  </div>
+  <div class="Divisao"></div>
+
+  <div style="display: flex; justify-content: center;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <select id="tipoAtacante">
+        <option value="op0">Escolha seu Pokémon</option>
+        <option value="normal">Snorlax, tipo Normal / Normal</option>
+        <option value="eletrico">Jolteon, tipo Elétrico / Electric</option>
+        <option value="lutador">Hitmonlee, tipo Lutador / Fighting</option>
+        <option value="voador">Tornadus, tipo Voador / Flying</option>
+        <option value="pedra">Gigalith, tipo Pedra / Rock</option>
+        <option value="sombrio">Zoroark, tipo Sombrio / Dark</option>
+        <option value="fogo">Arcanine, tipo Fogo / Fire</option>
+        <option value="planta">Sceptile, tipo Planta / Grass</option>
+        <option value="venenoso"> Arbok, tipo Venenoso / Poison</option>
+        <option value="psiquico">Alakazam, tipo Psiquico / Psychic</option>
+        <option value="fantasma">Banette, tipo Fantasma / Ghost</option>
+        <option value="metal">Melmetal, tipo Metal / Steel</option>
+        <option value="agua">Blastoise, tipo Água / Water</option>
+        <option value="gelo">Glalie, tipo Gelo / Ice</option>
+        <option value="terra">Sandslash, tipo Terra / Ground</option>
+        <option value="inseto">Pinsir, tipo Inseto / Bug</option>
+        <option value="dragao">Haxorus, tipo Dragão / Dragon</option>
+        <option value="fada">Sylveon, tipo Fada / Fairy</option>
+      </select>
+      <div id="image-display1">Qual o seu Pokémon?</div>
+    </div>
+    <img src="imagens/vs.jpeg" style="align-self: center;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <select id="tipoDefensor">
+        <option value="op0">Escolha seu Pokémon</option>
+        <option value="normal">Snorlax, tipo Normal / Normal</option>
+        <option value="eletrico">Jolteon, tipo Elétrico / Electric</option>
+        <option value="lutador">Hitmonlee, tipo Lutador / Fighting</option>
+        <option value="voador">Tornadus, tipo Voador / Flying</option>
+        <option value="pedra">Gigalith, tipo Pedra / Rock</option>
+        <option value="sombrio">Zoroark, tipo Sombrio / Dark</option>
+        <option value="fogo">Arcanine, tipo Fogo / Fire</option>
+        <option value="planta">Sceptile, tipo Planta / Grass</option>
+        <option value="venenoso"> Arbok, tipo Venenoso / Poison</option>
+        <option value="psiquico">Alakazam, tipo Psiquico / Psychic</option>
+        <option value="fantasma">Banette, tipo Fantasma / Ghost</option>
+        <option value="metal">Melmetal, tipo Metal / Steel</option>
+        <option value="agua">Blastoise, tipo Água / Water</option>
+        <option value="gelo">Glalie, tipo Gelo / Ice</option>
+        <option value="terra">Sandslash, tipo Terra / Ground</option>
+        <option value="inseto">Pinsir, tipo Inseto / Bug</option>
+        <option value="dragao">Haxorus, tipo Dragão / Dragon</option>
+        <option value="fada">Sylveon, tipo Fada / Fairy</option>
+      </select>
+      <div id="image-display2">Qual o seu Pokémon?</div>
+    </div>
+  </div>
+
+  <div id="div_mensagem"></div> <br>
+
+  <a class="btn" href="luta-tipo2.html">
+    <button id="lutarbut" onclick="lutar()">Lutem</button>
+  </a>
+
+  <div id="defensor-hp" class="health-bar"></div>
+  <div style="display: flex; flex-direction: column; align-items: center;"></div>
+  <div>
+    <button id="ataque1" onclick="atacar('ataque1')">Ataque 1</button>
+    <button id="ataque2" onclick="atacar('ataque2')">Ataque 2</button>
+    <button id="ataque3" onclick="atacar('ataque3')">Ataque 3</button>
+    <button id="ataque4" onclick="atacar('ataque4')">Ataque 4</button>
+  </div>
+
+  <div id="atacante-hp" class="health-bar"></div>
+  <div>
+    <button id="defesa1" onclick="defender('defesa1')">Ataque 1</button>
+    <button id="defesa2" onclick="defender('defesa2')">Ataque 2</button>
+    <button id="defesa3" onclick="defender('defesa3')">Ataque 3</button>
+    <button id="defesa4" onclick="defender('defesa4')">Ataque 4</button>
+  </div>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    #image-display1, #image-display2{
+        width: 200px;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        margin: 10px;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .health-bar {
+        width: 100%;
+        height: 20px;
+        background-color: green;
+        margin: 5px 0;
+    }
+    
+    button {
+        margin: 5px;
+        padding: 10px;
+        background-color: blue;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+  <section class="tipo">
+    <div class="container-tipo">
+      <div class="tipo-text">
+        <h2></h2>
+        <h3></h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="normal">
+    <div class="container-tipo">
+      <div class="nomral-text">
+        <h4></h4>
+        <p></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="container">
+      <ul>
+        <h3>Link</h3>
+        <a href="index.html">Home</a><br>
+        <a href="login.html">Faça seu Login já!</a><br>
+        <a href="cadastro.html">Cadastro-se já!</a><br>
+      </ul>
+      <ul>
+        <h3>Contatos</h3>
+        <p>11 95800-9686</p>
+        <p>Annihi_Master@outlook.com</p>
+        <p>Brasil</p>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var atacante = urlParams.get('atacante');
+    var defensor = urlParams.get('defensor');
+    var tipoAtacante = document.getElementById('tipoAtacante');
+    var tipoDefensor = document.getElementById('tipoDefensor');
+    var imageDisplay1 = document.getElementById('image-display1');
+    var imageDisplay2 = document.getElementById('image-display2');
+    var defenderHP = document.getElementById('defensor-hp');
+    var atacanteHP = document.getElementById('atacante-hp');
+
+    var tipoImagens = {
+            "normal": "poke-pasta/normal.png",
+            "eletrico": "poke-pasta/elétrico.png"
+            // Adicione outras imagens aqui
+        };
+
+        document.getElementById('image-display1').style.backgroundImage = 'url(' + tipoImagens[atacante] + ')';
+        document.getElementById('image-display2').style.backgroundImage = 'url(' + tipoImagens[defensor] + ')';
+
+        var hpAtacante = 100;
+        var hpDefensor = 100;
+        var acoesBatalha = [];
+
+    tipoAtacante.addEventListener('change', function () {
+      updateImageDisplay(tipoAtacante.value, imageDisplay1);
+      updateAtaques(tipoAtacante.value);
+    });
+
+    tipoDefensor.addEventListener('change', function () {
+      updateImageDisplay(tipoDefensor.value, imageDisplay2);
+      updateDefensor(tipoDefensor.value);
+    });
+
+    function updateImageDisplay(tipo, imageDisplay) {
+      var imageUrl;
+      switch (tipo) {
+        case 'normal':
+          imageUrl = 'imagens/snorlax.png';
+          break;
+        case 'eletrico':
+          imageUrl = 'imagens/jolteon.png';
+          break;
+        case 'lutador':
+          imageUrl = 'imagens/hitmonlee.png';
+          break;
+        case 'voador':
+          imageUrl = 'imagens/tornadus.png';
+          break;
+        case 'pedra':
+          imageUrl = 'imagens/gigalith.png';
+          break;
+        case 'sombrio':
+          imageUrl = 'imagens/zoroark.png';
+          break;
+        case 'fogo':
+          imageUrl = 'imagens/arcanine.png';
+          break;
+        case 'planta':
+          imageUrl = 'imagens/sceptile.png';
+          break;
+        case 'venenoso':
+          imageUrl = 'imagens/arbok.png';
+          break;
+        case 'psiquico':
+          imageUrl = 'imagens/alakazam.png';
+          break;
+        case 'fantasma':
+          imageUrl = 'imagens/banette.png';
+          break;
+        case 'metal':
+          imageUrl = 'imagens/melmetal.png';
+          break;
+        case 'agua':
+          imageUrl = 'imagens/blastoise.png';
+          break;
+        case 'gelo':
+          imageUrl = 'imagens/glalie.png';
+          break;
+        case 'terra':
+          imageUrl = 'imagens/sandslash.png';
+          break;
+        case 'inseto':
+          imageUrl = 'imagens/pinsir.png';
+          break;
+        case 'dragao':
+          imageUrl = 'imagens/haxorus.png';
+          break;
+        case 'fada':
+          imageUrl = 'imagens/sylveon.png';
+          break;
+        default:
+          imageUrl = '';
+          break;
+      }
+      imageDisplay.style.backgroundImage = imageUrl ? 'url(' + imageUrl + ')' : 'none';
+      imageDisplay.textContent = imageUrl ? '' : 'Escolha seu Pokémon';
+    }
+
+    function updateAtaques(tipo) {
+      var ataques = {
+        normal: ['Investida', 'Cabeçada', 'Bodyslam', 'Hiper Raio'],
+        eletrico: ['Choque do Trovão', 'Raio', 'Onda de Choque', 'Trovão'],
+        lutador: ['Soco', 'Chute', 'Mach Punch', 'Dynamic Punch'],
+        voador: ['Bicada', 'Ataque de Asas', 'Aéreo', 'Rajada'],
+        pedra: ['Lançamento de Pedras', 'Desmoronamento', 'Pedra Afiada', 'Rochas Vivas'],
+        sombrio: ['Mordida', 'Sombra Noturna', 'Assombração', 'Pulso Sombrio'],
+        fogo: ['Brasas', 'Lança-chamas', 'Fogo Explosivo', 'Calor Excessivo'],
+        planta: ['Chicote de Vinha', 'Folha Navalha', 'Raio Solar', 'Semente Sanguessuga'],
+        venenoso: ['Picada Venenosa', 'Lodo', 'Poção Tóxica', 'Acid'],
+        psiquico: ['Confusão', 'Poder Psiquico', 'Explosão de Mente', 'Telecinesia'],
+        fantasma: ['Sombra Noturna', 'Bola de Sombra', 'Amedrontar', 'Ataque Fantasma'],
+        metal: ['Garra de Aço', 'Cabeça de Ferro', 'Metal Pesado', 'Impacto de Ferro'],
+        agua: ['Jato de Água', 'Bolhas', 'Hidro Bomba', 'Surf'],
+        gelo: ['Nevasca', 'Geada', 'Gelo Esmagador', 'Vento Congelante'],
+        terra: ['Areia', 'Terremoto', 'Esmagamento', 'Tremor'],
+        inseto: ['Picada', 'Ataque de Inseto', 'Gosma', 'Investida de Inseto'],
+        dragao: ['Sopro de Dragão', 'Raio de Dragão', 'Garra de Dragão', 'Explosão de Dragão'],
+        fada: ['Brilho Mágico', 'Fada Encantada', 'Beijo Drenante', 'Luz Deslumbrante']
+      };
+
+      var ataqueButtons = [
+        document.getElementById('ataque1'),
+        document.getElementById('ataque2'),
+        document.getElementById('ataque3'),
+        document.getElementById('ataque4')
+      ];
+
+      if (ataques[tipo]) {
+        for (var i = 0; i < ataqueButtons.length; i++) {
+          ataqueButtons[i].textContent = ataques[tipo][i];
+        }
+      }
+    }
+
+    function updateDefensor(tipo) {
+      var defensor = {
+        normal: ['Investida', 'Cabeçada', 'Bodyslam', 'Hiper Raio'],
+        eletrico: ['Choque do Trovão', 'Raio', 'Onda de Choque', 'Trovão'],
+        lutador: ['Soco', 'Chute', 'Mach Punch', 'Dynamic Punch'],
+        voador: ['Bicada', 'Ataque de Asas', 'Aéreo', 'Rajada'],
+        pedra: ['Lançamento de Pedras', 'Desmoronamento', 'Pedra Afiada', 'Rochas Vivas'],
+        sombrio: ['Mordida', 'Sombra Noturna', 'Assombração', 'Pulso Sombrio'],
+        fogo: ['Brasas', 'Lança-chamas', 'Fogo Explosivo', 'Calor Excessivo'],
+        planta: ['Chicote de Vinha', 'Folha Navalha', 'Raio Solar', 'Semente Sanguessuga'],
+        venenoso: ['Picada Venenosa', 'Lodo', 'Poção Tóxica', 'Acid'],
+        psiquico: ['Confusão', 'Poder Psiquico', 'Explosão de Mente', 'Telecinesia'],
+        fantasma: ['Sombra Noturna', 'Bola de Sombra', 'Amedrontar', 'Ataque Fantasma'],
+        metal: ['Garra de Aço', 'Cabeça de Ferro', 'Metal Pesado', 'Impacto de Ferro'],
+        agua: ['Jato de Água', 'Bolhas', 'Hidro Bomba', 'Surf'],
+        gelo: ['Nevasca', 'Geada', 'Gelo Esmagador', 'Vento Congelante'],
+        terra: ['Areia', 'Terremoto', 'Esmagamento', 'Tremor'],
+        inseto: ['Picada', 'Ataque de Inseto', 'Gosma', 'Investida de Inseto'],
+        dragao: ['Sopro de Dragão', 'Raio de Dragão', 'Garra de Dragão', 'Explosão de Dragão'],
+        fada: ['Brilho Mágico', 'Fada Encantada', 'Beijo Drenante', 'Luz Deslumbrante']
+      };
+
+      var ataqueButtons = [
+        document.getElementById('defesa1'),
+        document.getElementById('defesa2'),
+        document.getElementById('defesa3'),
+        document.getElementById('defesa4')
+      ];
+
+      if (defensor[tipo]) {
+        for (var i = 0; i < ataqueButtons.length; i++) {
+          ataqueButtons[i].textContent = defensor[tipo][i];
+        }
+      }
+    }
+
+    function atacar(ataque) {
+            var dano = Math.floor(Math.random() * 20) + 1;
+            hpDefensor -= dano;
+            document.getElementById('defensor-hp').style.width = hpDefensor + '%';
+            adicionarAcao(`Atacante usou ${ataque} e causou ${dano} de dano!`);
+
+            if (hpDefensor <= 0) {
+                adicionarAcao('Atacante venceu!');
+                salvarResultado('Atacante');
+                resetarBatalha();
+            }
+        }
+
+        function defender(ataque) {
+            var dano = Math.floor(Math.random() * 20) + 1;
+            hpAtacante -= dano;
+            document.getElementById('atacante-hp').style.width = hpAtacante + '%';
+            adicionarAcao(`Defensor usou ${ataque} e causou ${dano} de dano!`);
+
+            if (hpAtacante <= 0) {
+                adicionarAcao('Defensor venceu!');
+                salvarResultado('Defensor');
+                resetarBatalha();
+            }
+        }
+
+        function salvarResultado(vencedor) {
+            var historicoBatalhas = JSON.parse(localStorage.getItem('historicoBatalhas')) || [];
+            var campeoes = JSON.parse(localStorage.getItem('campeoes')) || [];
+            historicoBatalhas.push(`Atacante (${atacante}) vs Defensor (${defensor}) - Vencedor: ${vencedor}`);
+            campeoes.push(vencedor);
+            localStorage.setItem('historicoBatalhas', JSON.stringify(historicoBatalhas));
+            localStorage.setItem('campeoes', JSON.stringify(campeoes));
+        }
+
+        function resetarBatalha() {
+            hpAtacante = 100;
+            hpDefensor = 100;
+            document.getElementById('atacante-hp').style.width = '100%';
+            document.getElementById('defensor-hp').style.width = '100%';
+        }
+
+  </script>
+</body>
+
+</html>
