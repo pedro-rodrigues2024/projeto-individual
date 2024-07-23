@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantegam e desvantagens na pratica</title>
+    <link rel="stylesheet" href="formulario_luta-tipo.css">
+    <style>
+        /* Adicionando a tag style do material original */
+        .health-bar {
+            width: 100%;
+            height: 30px;
+            background-color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body style="font-family: Inter;">
+    <div class="TiagensPage"> <!-- Div que representa a página inteira -->
+        <div class="header">
+            <div class="container-topo">
+                <nav>
+                    <div class="navbar">
+                        <a href="index.html">
+                            <img src="imagens/logo.png" alt="Logo" class="logo-navbar">
+                        </a>
+                        <ul class="ul">
+                            <a href="index.html">PrimeBlog</a></li>
+                            <li>|</li>
+                            <li id="cadastro"><a class="btn" href="cadastro.html">Cadastro</a></li>
+                            <li>|</li>
+                            <li id="login"><a class="btn" href="login.html">Entrar</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container"></div>
+
+        <div class="Divisao"></div>
+
+        <div class="banner">
+            <div class="container">
+                <div class="caixa_formulario">
+                    <div class="formulario"></div>
+                </div>
+            </div>
+        </div>
+
+        <a href="tipagens.html"><button onclick="voltar()">Tipos</button></a>
+
+        <div class="Divisao"></div>
+
+        <!-- Conteúdo principal do simulador de batalha -->
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <select id="tipoAtacante" onchange="lutar()">
+                    <option value="op0">Escolha seu Pokémon</option>
+                    <option value="normal">Snorlax, tipo Normal / Normal</option>
+                    <option value="eletrico">Jolteon, tipo Elétrico / Electric</option>
+                    <option value="lutador">Hitmonlee, tipo Lutador / Fighting</option>
+                    <option value="voador">Tornadus, tipo Voador / Flying</option>
+                    <option value="pedra">Gigalith, tipo Pedra / Rock</option>
+                    <option value="sombrio">Zoroark, tipo Sombrio / Dark</option>
+                    <option value="fogo">Arcanine, tipo Fogo / Fire</option>
+                    <option value="planta">Sceptile, tipo Planta / Grass</option>
+                    <option value="venenoso">Arbok, tipo Venenoso / Poison</option>
+                    <option value="psiquico">Alakazam, tipo Psiquico / Psychic</option>
+                    <option value="fantasma">Banette, tipo Fantasma / Ghost</option>
+                    <option value="metal">Melmetal, tipo Metal / Steel</option>
+                    <option value="agua">Blastoise, tipo Água / Water</option>
+                    <option value="gelo">Glalie, tipo Gelo / Ice</option>
+                    <option value="terra">Sandslash, tipo Terra / Ground</option>
+                    <option value="inseto">Pinsir, tipo Inseto / Bug</option>
+                    <option value="dragao">Haxorus, tipo Dragão / Dragon</option>
+                    <option value="fada">Sylveon, tipo Fada / Fairy</option>
+                </select>
+                <div id="image-display1">Qual o seu Pokémon?</div>
+            </div>
+            <img src="imagens/vs.jpeg" style="align-self: center;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <select id="tipoDefensor" onchange="lutar()">
+                    <option value="op0">Escolha seu Pokémon</option>
+                    <option value="normal">Snorlax, tipo Normal / Normal</option>
+                    <option value="eletrico">Jolteon, tipo Elétrico / Electric</option>
+                    <option value="lutador">Hitmonlee, tipo Lutador / Fighting</option>
+                    <option value="voador">Tornadus, tipo Voador / Flying</option>
+                    <option value="pedra">Gigalith, tipo Pedra / Rock</option>
+                    <option value="sombrio">Zoroark, tipo Sombrio / Dark</option>
+                    <option value="fogo">Arcanine, tipo Fogo / Fire</option>
+                    <option value="planta">Sceptile, tipo Planta / Grass</option>
+                    <option value="venenoso">Arbok, tipo Venenoso / Poison</option>
+                    <option value="psiquico">Alakazam, tipo Psiquico / Psychic</option>
+                    <option value="fantasma">Banette, tipo Fantasma / Ghost</option>
+                    <option value="metal">Melmetal, tipo Metal / Steel</option>
+                    <option value="agua">Blastoise, tipo Água / Water</option>
+                    <option value="gelo">Glalie, tipo Gelo / Ice</option>
+                    <option value="terra">Sandslash, tipo Terra / Ground</option>
+                    <option value="inseto">Pinsir, tipo Inseto / Bug</option>
+                    <option value="dragao">Haxorus, tipo Dragão / Dragon</option>
+                    <option value="fada">Sylveon, tipo Fada / Fairy</option>
+                </select>
+                <div id="image-display2">Qual o seu Pokémon?</div>
+            </div>
+        </div>
+
+        <div id="div_mensagem"></div>
+        <br>
+
+        <div id="defensor-hp" class="health-bar"></div>
+        <div style="display: flex; flex-direction: column; align-items: center;"></div>
+        <div>
+            <button id="ataque1" onclick="atacar('ataque1')">Ataque 1</button>
+            <button id="ataque2" onclick="atacar('ataque2')">Ataque 2</button>
+            <button id="ataque3" onclick="atacar('ataque3')">Ataque 3</button>
+            <button id="ataque4" onclick="atacar('ataque4')">Ataque 4</button>
+        </div>
+
+        <div id="atacante-hp" class="health-bar"></div>
+        <div>
+            <button id="defesa1" onclick="defender('defesa1')">Ataque 1</button>
+            <button id="defesa2" onclick="defender('defesa2')">Ataque 2</button>
+            <button id="defesa3" onclick="defender('defesa3')">Ataque 3</button>
+            <button id="defesa4" onclick="defender('defesa4')">Ataque 4</button>
+        </div>
+
+        <section class="tipo">
+            <div class="container-tipo">
+                <div class="tipo-text">
+                    <h2></h2>
+                    <h3></h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="normal">
+            <div class="container-tipo">
+                <div class="nomral-text">
+                    <h4></h4>
+                    <p></p>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <div class="container">
+                <ul>
+                    <h3>Link</h3>
+                    <a href="index.html">Home</a><br>
+                    <a href="login.html">Faça seu Login já!</a><br>
+                    <a href="cadastro.html">Cadastro-se já!</a><br>
+                </ul>
+                <ul>
+                    <h3>Contatos</h3>
+                    <p>11 95800-9686</p>
+                    <p>Annihi_Master@outlook.com</p>
+                    <p>Brasil</p>
+                </ul>
+                <ul>
+                    <h3>Redes Sociais</h3>
+                    <a href="index.html"><img src="imagens/logo.png" alt="Logo" class="logo-navbar"></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript do primeiro código, adicionado se necessário
+
+        // Função para voltar
+        function voltar() {
+            window.history.back();
+        }
+
+        // Função do segundo código
+        function lutar() {
+            const tipoAtacante = document.getElementById("tipoAtacante").value;
+            const tipoDefensor = document.getElementById("tipoDefensor").value;
+
+            const imageDisplay1 = document.getElementById("image-display1");
+            const imageDisplay2 = document.getElementById("image-display2");
+
+            const mensagemDiv = document.getElementById("div_mensagem");
+
+            if (tipoAtacante === "op0" || tipoDefensor === "op0") {
+                mensagemDiv.innerHTML = "<p style='color: red;'>Por favor, escolha dois pokémons antes de continuar.</p>";
+                return;
+            }
+
+            // Atualiza o display das imagens conforme a seleção
+            imageDisplay1.innerHTML = `<img src="imagens/${tipoAtacante}.png" style="width: 150px; height: 150px;">`;
+            imageDisplay2.innerHTML = `<img src="imagens/${tipoDefensor}.png" style="width: 150px; height: 150px;">`;
+
+            // Lógica para determinar a vantagem e desvantagem
+            if (tipoAtacante === "eletrico" && tipoDefensor === "agua") {
+                mensagemDiv.innerHTML = `<p style="color: blue;">Vantagem: ${tipoAtacante} tem vantagem sobre ${tipoDefensor}!</p>`;
+            } else if (tipoAtacante === "agua" && tipoDefensor === "eletrico") {
+                mensagemDiv.innerHTML = `<p style="color: red;">Desvantagem: ${tipoAtacante} tem desvantagem sobre ${tipoDefensor}!</p>`;
+            } else {
+                mensagemDiv.innerHTML = `<p>Os dois pokémons estão em condições iguais!</p>`;
+            }
+        }
+
+        // Funções para ataques e defesas (apenas placeholders)
+        function atacar(ataque) {
+            console.log(`Atacando com ${ataque}`);
+        }
+
+        function defender(defesa) {
+            console.log(`Defendendo com ${defesa}`);
+        }
+    </script>
+</body>
+</html>
+
