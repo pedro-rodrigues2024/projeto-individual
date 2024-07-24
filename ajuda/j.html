@@ -365,6 +365,14 @@
       }
     }
 
+    function adicionarAcao(acao) {
+            acoesBatalha.push(acao);
+            var acoesElement = document.getElementById('acoes-batalha');
+            var li = document.createElement('li');
+            li.textContent = acao;
+            acoesElement.appendChild(li);
+        }
+
     function atacar(ataque) {
             var dano = Math.floor(Math.random() * 20) + 1;
             hpDefensor -= dano;
