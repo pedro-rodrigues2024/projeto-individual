@@ -195,7 +195,7 @@
 
     const tipoVantagens = {
       normal: { forte: [], fraco: ["pedra", "metal"], imune: ["fantasma"] },
-      eletrico: { forte: ["agua", "voador"], fraco: ["planta", "dragao"], imune: ["terra"] },
+      eletrico: { forte: ["agua", "voador"], fraco: ["planta", "dragao", "eletrico"], imune: ["terra"] },
       lutador: { forte: ["normal", "pedra", "metal", "gelo", "sombrio"], fraco: ["voador", "venenoso", "psiquico", "inseto", "fada"], imune: ["fantasma"] },
       voador: { forte: ["lutador", "inseto", "planta"], fraco: ["pedra", "metal", "eletrico"], imune: [] },
       pedra: { forte: ["fogo", "voador", "inseto", "gelo"], fraco: ["lutador", "terra", "metal"], imune: [] },
@@ -204,12 +204,12 @@
       planta: { forte: ["agua", "terra", "pedra"], fraco: ["fogo", "planta", "voador", "venenoso", "inseto", "dragao", "metal"], imune: [] },
       venenoso: { forte: ["planta", "fada"], fraco: ["venenoso", "terra", "pedra", "fantasma"], imune: ["metal"] },
       psiquico: { forte: ["lutador", "venenoso"], fraco: ["psiquico", "metal"], imune: ["sombrio"] },
-      fantasma: { forte: ["psiquico", "fantasma"], fraco: ["sombrio"], imune: ["normal"] },
+      fantasma: { forte: ["psiquico", "fantasma"], fraco: ["sombrio", "metal"], imune: ["normal"] },
       metal: { forte: ["pedra", "fada", "gelo"], fraco: ["fogo", "agua", "eletrico", "metal"], imune: [] },
       agua: { forte: ["fogo", "terra", "pedra"], fraco: ["agua", "planta", "dragao"], imune: [] },
-      gelo: { forte: ["planta", "terra", "dragao", "voador"], fraco: ["fogo", "agua", "metal"], imune: [] },
+      gelo: { forte: ["planta", "terra", "dragao", "voador"], fraco: ["fogo", "agua", "metal", "gelo"], imune: [] },
       terra: { forte: ["fogo", "eletrico", "venenoso", "pedra", "metal"], fraco: ["planta", "inseto"], imune: ["voador"] },
-      inseto: { forte: ["planta", "psiquico", "sombrio"], fraco: ["fogo", "lutador", "voador", "fantasma", "metal"], imune: [] },
+      inseto: { forte: ["planta", "psiquico", "sombrio"], fraco: ["fogo", "lutador", "voador", "fantasma", "metal", "venenoso", "fada"], imune: [] },
       dragao: { forte: ["dragao"], fraco: ["metal"], imune: ["fada"] },
       fada: { forte: ["lutador", "dragao", "sombrio"], fraco: ["fogo", "venenoso", "metal"], imune: [] },
     };

@@ -47,7 +47,7 @@
 
   <div style="display: flex; justify-content: center;">
     <div style="display: flex; flex-direction: column; align-items: center;">
-      <select id="tipoAtacante"> <!-- escolher qual o elemento que irá atacar-->
+      <select id="tipoAtacante">
         <option value="op0">Escolha seu Pokémon</option>
         <option value="normal">Snorlax, tipo Normal / Normal</option>
         <option value="eletrico">Jolteon, tipo Elétrico / Electric</option>
@@ -72,7 +72,7 @@
     </div>
     <img src="imagens/vs.jpeg" style="align-self: center;">
     <div style="display: flex; flex-direction: column; align-items: center;">
-      <select id="tipoDefensor"> <!-- escolher qual o elemento que irá defender o ataque-->
+      <select id="tipoDefensor">
         <option value="op0">Escolha seu Pokémon</option>
         <option value="normal">Snorlax, tipo Normal / Normal</option>
         <option value="eletrico">Jolteon, tipo Elétrico / Electric</option>
@@ -99,29 +99,73 @@
 
   <div id="div_mensagem"></div> <br>
 
-  <a class="btn" href="luta-tipo2.html"> 
-    <button id="lutarbut" onclick="lutar()">Lutem</button>
-  </a>
+  <div id="defensor-hp" class="health-bar" style="width: 100%; background-color: green; height: 20px;"></div>
+  <div style="display: flex; flex-direction: column; align-items: center;"></div>
+  <div>
+    <button id="ataque1" onclick="atacar('ataque1')">Ataque 1</button>
+    <button id="ataque2" onclick="atacar('ataque2')">Ataque 2</button>
+    <button id="ataque3" onclick="atacar('ataque3')">Ataque 3</button>
+    <button id="ataque4" onclick="atacar('ataque4')">Ataque 4</button>
+  </div>
 
+  <div id="atacante-hp" class="health-bar" style="width: 100%; background-color: green; height: 20px;"></div>
+  <div>
+    <button id="defesa1" onclick="defender('defesa1')">Ataque 1</button>
+    <button id="defesa2" onclick="defender('defesa2')">Ataque 2</button>
+    <button id="defesa3" onclick="defender('defesa3')">Ataque 3</button>
+    <button id="defesa4" onclick="defender('defesa4')">Ataque 4</button>
+  </div>
+  
+  <div id="acao-lista">
+    <h3>Ações realizadas:</h3>
+    <ul id="acoes"></ul>
+  </div>
 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
 
-  <section class="tipo">
-    <div class="container-tipo">
-      <div class="tipo-text">
-        <h2></h2>
-        <h3></h3>
-      </div>
-    </div>
-  </section>
+    #image-display1,
+    #image-display2 {
+      width: 200px;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      margin: 10px;
+    }
 
-  <section class="normal">
-    <div class="container-tipo">
-      <div class="nomral-text">
-        <h4></h4>
-        <p></p>
-      </div>
-    </div>
-  </section>
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .health-bar {
+      width: 100%;
+      height: 20px;
+      background-color: green;
+      margin: 5px 0;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px;
+      background-color: lightblue;
+      border: none;
+      cursor: pointer;
+    }
+
+    .selected {
+      border: 2px solid blue;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+
 
   <div class="footer">
     <div class="container">
@@ -177,29 +221,153 @@
 
 
   <script>
-    var tipoAtacante = document.getElementById('tipoAtacante');
-    var tipoDefensor = document.getElementById('tipoDefensor');
-
-    var tipoImagens = {
-      "normal": "poke-pasta/normal.png",
-      "eletrico": "poke-pasta/elétrico.png",
-      "lutador": "poke-pasta/lutador.png",
-      "voador": "poke-pasta/voador.png",
-      "pedra": "poke-pasta/pedra.png",
-      "sombrio": "poke-pasta/sombrio.png",
-      "fogo": "poke-pasta/fogo.png",
-      "planta": "poke-pasta/planta.png",
-      "venenoso": "poke-pasta/venenoso.png",
-      "psiquico": "poke-pasta/psiquico.png",
-      "fantasma": "poke-pasta/fantasma.png",
-      "metal": "poke-pasta/metal.png",
-      "agua": "poke-pasta/agua.png",
-      "gelo": "poke-pasta/gelo.png",
-      "terra": "poke-pasta/terra.png",
-      "inseto": "poke-pasta/inseto.png",
-      "dragao": "poke-pasta/dragao.png",
-      "fada": "poke-pasta/fada.png"
+    const pokemons = {
+      normal: "imagens/snorlax.png",
+      eletrico: "imagens/jolteon.png",
+      lutador: "imagens/hitmonlee.png",
+      voador: "imagens/tornadus.png",
+      pedra: "imagens/gigalith.png",
+      sombrio: "imagens/zoroark.png",
+      fogo: "imagens/arcanine.png",
+      planta: "imagens/sceptile.png",
+      venenoso: "imagens/arbok.png",
+      psiquico: "imagens/alakazam.png",
+      fantasma: "imagens/banette.png",
+      metal: "imagens/melmetal.png",
+      agua: "imagens/blastoise.png",
+      gelo: "imagens/glalie.png",
+      terra: "imagens/sandslash.png",
+      inseto: "imagens/pinsir.png",
+      dragao: "imagens/haxorus.png",
+      fada: "imagens/sylveon.png",
     };
+
+    let atacanteNome = "";
+    let defensorNome = "";
+    let atacanteTipo = "";
+    let defensorTipo = "";
+
+    const tipoVantagens = {
+      normal: { forte: [], fraco: ["pedra", "metal"], imune: ["fantasma"] },
+      eletrico: { forte: ["agua", "voador"], fraco: ["planta", "dragao", "eletrico"], imune: ["terra"] },
+      lutador: { forte: ["normal", "pedra", "metal", "gelo", "sombrio"], fraco: ["voador", "venenoso", "psiquico", "inseto", "fada"], imune: ["fantasma"] },
+      voador: { forte: ["lutador", "inseto", "planta"], fraco: ["pedra", "metal", "eletrico"], imune: [] },
+      pedra: { forte: ["fogo", "voador", "inseto", "gelo"], fraco: ["lutador", "terra", "metal"], imune: [] },
+      sombrio: { forte: ["psiquico", "fantasma"], fraco: ["lutador", "sombrio", "fada"], imune: [] },
+      fogo: { forte: ["planta", "gelo", "metal", "inseto"], fraco: ["fogo", "agua", "pedra", "dragao"], imune: [] },
+      planta: { forte: ["agua", "terra", "pedra"], fraco: ["fogo", "planta", "voador", "venenoso", "inseto", "dragao", "metal"], imune: [] },
+      venenoso: { forte: ["planta", "fada"], fraco: ["venenoso", "terra", "pedra", "fantasma"], imune: ["metal"] },
+      psiquico: { forte: ["lutador", "venenoso"], fraco: ["psiquico", "metal"], imune: ["sombrio"] },
+      fantasma: { forte: ["psiquico", "fantasma"], fraco: ["sombrio", "metal"], imune: ["normal"] },
+      metal: { forte: ["pedra", "fada", "gelo"], fraco: ["fogo", "agua", "eletrico", "metal"], imune: [] },
+      agua: { forte: ["fogo", "terra", "pedra"], fraco: ["agua", "planta", "dragao"], imune: [] },
+      gelo: { forte: ["planta", "terra", "dragao", "voador"], fraco: ["fogo", "agua", "metal", "gelo"], imune: [] },
+      terra: { forte: ["fogo", "eletrico", "venenoso", "pedra", "metal"], fraco: ["planta", "inseto"], imune: ["voador"] },
+      inseto: { forte: ["planta", "psiquico", "sombrio"], fraco: ["fogo", "lutador", "voador", "fantasma", "metal", "venenoso", "fada"], imune: [] },
+      dragao: { forte: ["dragao"], fraco: ["metal"], imune: ["fada"] },
+      fada: { forte: ["lutador", "dragao", "sombrio"], fraco: ["fogo", "venenoso", "metal"], imune: [] },
+    };
+
+    document.getElementById("tipoAtacante").addEventListener("change", function () {
+      const tipo = this.value;
+      const imageUrl = pokemons[tipo] || "";
+      const imageDisplay1 = document.getElementById("image-display1");
+
+      if (imageUrl) {
+        imageDisplay1.style.backgroundImage = `url(${imageUrl})`;
+        atacanteNome = this.options[this.selectedIndex].text.split(",")[0];
+        atacanteTipo = tipo;
+      } else {
+        imageDisplay1.style.backgroundImage = "";
+        imageDisplay1.textContent = "Qual o seu Pokémon?";
+        atacanteNome = "";
+        atacanteTipo = "";
+      }
+      updateAtaques(tipo);
+    });
+
+    document.getElementById("tipoDefensor").addEventListener("change", function () {
+      const tipo = this.value;
+      const imageUrl = pokemons[tipo] || "";
+      const imageDisplay2 = document.getElementById("image-display2");
+
+      if (imageUrl) {
+        imageDisplay2.style.backgroundImage = `url(${imageUrl})`;
+        defensorNome = this.options[this.selectedIndex].text.split(",")[0];
+        defensorTipo = tipo;
+      } else {
+        imageDisplay2.style.backgroundImage = "";
+        imageDisplay2.textContent = "Qual o seu Pokémon?";
+        defensorNome = "";
+        defensorTipo = "";
+      }
+      updateDefensor(tipo);
+    });
+
+    const ataques = {
+      normal: ["Giga Impacto/Giga Impect", "Cabeçada", "Amnésia", "Descanso"],
+      eletrico: ["Choque do Trovão", "Onda de Choque", "Raio", "Cauda de Ferro"],
+      lutador: ["Chute Baixo", "Chute Circular", "Chute Triplo", "Mega Soco"],
+      voador: ["Ataque de Asa", "Ataque Aéreo", "Dança das Penas", "Acrobacia"],
+      pedra: ["Deslize de Pedras", "Lâmina de Pedra", "Explosão de Pedras", "Tempestade de Areia"],
+      sombrio: ["Ataque Noturno", "Ataque Sombrio", "Punho das Sombras", "Armadura Sombria"],
+      fogo: ["Lança-Chamas", "Queimadura", "Chama da Vingança", "Erupção"],
+      planta: ["Folha Navalha", "Chicote de Cipó", "Raio Solar", "Semente Sanguessuga"],
+      venenoso: ["Jato de Veneno", "Gás Venenoso", "Bomba de Lodo", "Golpe Venenoso"],
+      psiquico: ["Confusão", "Psybeam", "Psyshock", "Campo Psíquico"],
+      fantasma: ["Bola Sombria", "Assombração", "Punho Fantasma", "Campo Fantasma"],
+      metal: ["Canhão de Flash", "Garra de Metal", "Cabeçada de Ferro", "Lâmina de Ferro"],
+      agua: ["Jato de Água", "Hidro Bomba", "Pulso de Água", "Dança da Chuva"],
+      gelo: ["Rajada de Gelo", "Lança de Gelo", "Tempestade de Neve", "Congelamento"],
+      terra: ["Terremoto", "Fissura", "Caveira de Terra", "Deslizamento de Terra"],
+      inseto: ["Picada de Inseto", "Pó de Vento", "Mordida de Inseto", "Defesa de Casulo"],
+      dragao: ["Sopro de Dragão", "Fúria do Dragão", "Garra de Dragão", "Pulso do Dragão"],
+      fada: ["Vento Encantado", "Brilho Mágico", "Bajulação", "Armadura de Fada"],
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function atualizarImagem() {
       var selectedAtacante = tipoAtacante.value;
