@@ -4,10 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metric Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="escDash.css">
-    <script id="endpoint" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-navbar {
+            height: 40px;
+        }
+
+        .ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .ul a, .ul li {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        .btn {
+            background: #007BFF;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .titulo-secao, .titulo-metrica {
+            text-align: center;
+        }
+
+        .separator {
+            height: 2px;
+            background: #333;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .box-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .box-info-single {
+            flex: 1 0 21%;
+            margin: 10px;
+            padding: 20px;
+            color: #fff;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .info-text h3 {
+            margin: 0;
+        }
+
+        .metric-table {
+            width: 45%;
+            margin: 20px auto;
+        }
+
+        .metric-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .metric-table th, .metric-table td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -22,14 +139,14 @@
                         <li>|</li>
                         <a class="btn" href="cadastro.html">Cadastro</a>
                         <li>|</li>
-                        <a class="btn" href="login.html">Entrar</a>
+                        <a class="btn" id="login-button" href="login.html">Entrar</a>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
 
-    <section>
+    <section id="dashboard-section" style="display: none;">
         <div class="content">
             <div class="titulo-secao">
                 <h2 style="color: rgb(0, 0, 0);">Popularidade</h2>
@@ -45,87 +162,12 @@
                     <div id="percentual-metric" style="font-size: 2em; color: #4caf50;">0%</div>
                 </div>
 
-                <div style="background: linear-gradient(451deg, #a00000, #FF5370);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Annihilape</h3>
-                        <p>150</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #7fdb23, #a0da67);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Shuclke</h3>
-                        <p>150</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #4d0758, #7853ff);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Mimikyu</h3>
-                        <p>200</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #1039f2, #6610f2);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Garchomp</h3>
-                        <p>300</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #001aff, #00ccff);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Greninja</h3>
-                        <p>380</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #4d0758, #7853ff);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Gengar</h3>
-                        <p>380</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #ff6200, #ff904c);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Charizard</h3>
-                        <p>480</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #a00000, #FF5370);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Lucario</h3>
-                        <p>484</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #f8ef9d, #ece69e);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Eevee</h3>
-                        <p>464</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #ffff00, #ffff54);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Pikachu</h3>
-                        <p>1.000</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #f2ebab, #ff00fb);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Outros</h3>
-                        <p>345</p>
-                    </div>
-                </div>
+                <div id="pokemon-boxes"></div>
             </div>
         </div>
     </section>
 
-    <div id="dash">
+    <div id="dash" style="display: none;">
         <div>
             <canvas id="grafico1"></canvas>
         </div>
@@ -134,7 +176,7 @@
     <br>
     <br>
 
-    <section>
+    <section id="metrics-section" style="display: none;">
         <div class="content">
             <div class="titulo-metrica">
                 <h2 style="color: rgb(0, 0, 0);">Métricas de Popularidade</h2>
@@ -143,7 +185,6 @@
             </div>
 
             <div class="box-info">
-                <!-- Tabela Percentual -->
                 <div class="metric-table">
                     <h2 style="color: rgb(0, 0, 0);">Métrica Percentual</h2>
                     <table>
@@ -154,12 +195,10 @@
                             </tr>
                         </thead>
                         <tbody id="percentual-table-body">
-                            <!-- Dados serão inseridos via JavaScript -->
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Tabela de Ranking -->
                 <div class="metric-table">
                     <h2 style="color: rgb(0, 0, 0);">Métrica de Ranking</h2>
                     <table>
@@ -170,7 +209,6 @@
                             </tr>
                         </thead>
                         <tbody id="ranking-table-body">
-                            <!-- Dados serão inseridos via JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -199,86 +237,126 @@
 </html>
 
 <script>
-  // tabela do percentual
-  document.addEventListener('DOMContentLoaded', () => {
-    const percentualData = [
-        { pokemon: 'Annihilape', percentual: 10 },
-        { pokemon: 'Shuclke', percentual: 8 },
-        { pokemon: 'Mimikyu', percentual: 12 },
-        { pokemon: 'Garchomp', percentual: 15 },
-        { pokemon: 'Greninja', percentual: 20 },
-        { pokemon: 'Gengar', percentual: 10 },
-        { pokemon: 'Charizard', percentual: 25 }
-    ];
-    
-    // tabel do raking
-    const rankingData = [
-        { position: 1, pokemon: 'Pikachu' },
-        { position: 2, pokemon: 'Charizard' },
-        { position: 3, pokemon: 'Greninja' },
-        { position: 4, pokemon: 'Lucario' },
-        { position: 5, pokemon: 'Eevee' }
-    ];
-
+document.addEventListener('DOMContentLoaded', () => {
+    const loginButton = document.getElementById('login-button');
+    const dashboardSection = document.getElementById('dashboard-section');
+    const metricsSection = document.getElementById('metrics-section');
+    const grafico1 = document.getElementById('grafico1');
     const percentualTableBody = document.getElementById('percentual-table-body');
     const rankingTableBody = document.getElementById('ranking-table-body');
-
-      // tabela do percentual
-    percentualData.forEach(data => {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td>${data.pokemon}</td><td>${data.percentual}%</td>`;
-        percentualTableBody.appendChild(row);
-    });
-
-        // tabel do raking
-    rankingData.forEach(data => {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td>${data.position}</td><td>${data.pokemon}</td>`;
-        rankingTableBody.appendChild(row);
-    });
-
-    const ctx = document.getElementById('grafico1');
-
-    let labelsX = ["Annihilape", "Shuclke", "Mimikyu", "Garchomp", "Greninja", "Gengar", "Charizard", "Lucario", "Eevee", "Pikachu", "Outros"];
-    let valores = [150, 150, 200, 300, 380, 380, 480, 484, 464, 1000, 345];
+    const pokemonBoxes = document.getElementById('pokemon-boxes');
     
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labelsX,
-            datasets: [{
-                label: '# of Votes',
-                data: valores,
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+    loginButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        // Mock login
+        const user = { loggedIn: true }; // Replace this with real authentication logic
+
+        if (user.loggedIn) {
+            loginButton.style.display = 'none';
+            dashboardSection.style.display = 'block';
+            metricsSection.style.display = 'block';
+            grafico1.style.display = 'block';
+
+            fetchDashboardData();
         }
     });
 
-    fetch(endpoint.src)
-        .then(res => res.json())
-        .then(res => {
-            valores[0] = res.Annihilape;
-            valores[1] = res.Shuclke;
-            valores[2] = res.Mimikyu;
-            valores[3] = res.Garchomp;
-            valores[4] = res.Greninja;
-            valores[5] = res.Gengar;
-            valores[6] = res.Charizard;
-            valores[7] = res.Lucario;
-            valores[8] = res.Eevee;
-            valores[9] = res.Pikachu;
-            valores[10] = res.outro;
-        })
-        .catch(erro => {
-            console.log("ERRO: " + erro);
-        });
-});
+    function fetchDashboardData() {
+        // Mock fetching data from server
+        const percentualData = [
+            { pokemon: 'Annihilape', percentual: 10 },
+            { pokemon: 'Shuclke', percentual: 8 },
+            { pokemon: 'Mimikyu', percentual: 12 },
+            { pokemon: 'Garchomp', percentual: 15 },
+            { pokemon: 'Greninja', percentual: 20 },
+            { pokemon: 'Gengar', percentual: 10 },
+            { pokemon: 'Charizard', percentual: 25 }
+        ];
 
+        const rankingData = [
+            { position: 1, pokemon: 'Pikachu' },
+            { position: 2, pokemon: 'Charizard' },
+            { position: 3, pokemon: 'Greninja' },
+            { position: 4, pokemon: 'Lucario' },
+            { position: 5, pokemon: 'Eevee' }
+        ];
+
+        const pokemonValues = [
+            { name: 'Annihilape', value: 150, color: '#a00000', gradient: '#FF5370' },
+            { name: 'Shuclke', value: 150, color: '#7fdb23', gradient: '#a0da67' },
+            { name: 'Mimikyu', value: 200, color: '#4d0758', gradient: '#7853ff' },
+            { name: 'Garchomp', value: 300, color: '#1039f2', gradient: '#6610f2' },
+            { name: 'Greninja', value: 380, color: '#001aff', gradient: '#00ccff' },
+            { name: 'Gengar', value: 380, color: '#4d0758', gradient: '#7853ff' },
+            { name: 'Charizard', value: 480, color: '#ff6200', gradient: '#ff904c' },
+            { name: 'Lucario', value: 484, color: '#a00000', gradient: '#FF5370' },
+            { name: 'Eevee', value: 464, color: '#f8ef9d', gradient: '#ece69e' },
+            { name: 'Pikachu', value: 1000, color: '#ffff00', gradient: '#ffff54' },
+            { name: 'Outros', value: 345, color: '#f2ebab', gradient: '#ff00fb' }
+        ];
+
+        updatePercentualTable(percentualData);
+        updateRankingTable(rankingData);
+        updatePokemonBoxes(pokemonValues);
+
+        const labels = pokemonValues.map(item => item.name);
+        const values = pokemonValues.map(item => item.value);
+        renderChart(labels, values);
+    }
+
+    function updatePercentualTable(data) {
+        percentualTableBody.innerHTML = '';
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${item.pokemon}</td><td>${item.percentual}%</td>`;
+            percentualTableBody.appendChild(row);
+        });
+    }
+
+    function updateRankingTable(data) {
+        rankingTableBody.innerHTML = '';
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${item.position}</td><td>${item.pokemon}</td>`;
+            rankingTableBody.appendChild(row);
+        });
+    }
+
+    function updatePokemonBoxes(data) {
+        pokemonBoxes.innerHTML = '';
+        data.forEach(item => {
+            const box = document.createElement('div');
+            box.className = 'box-info-single';
+            box.style.background = `linear-gradient(451deg, ${item.color}, ${item.gradient})`;
+            box.innerHTML = `
+                <div class="info-text">
+                    <h3>${item.name}</h3>
+                    <p>${item.value}</p>
+                </div>
+            `;
+            pokemonBoxes.appendChild(box);
+        });
+    }
+
+    function renderChart(labels, values) {
+        new Chart(grafico1, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# of Votes',
+                    data: values,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+});
 </script>
