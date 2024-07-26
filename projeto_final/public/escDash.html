@@ -202,22 +202,22 @@
   // tabela do percentual
   document.addEventListener('DOMContentLoaded', () => {
     const percentualData = [
-        { pokemon: , percentual:  },
-        { pokemon: , percentual:  },
-        { pokemon: , percentual:  },
-        { pokemon: , percentual:  },
-        { pokemon: , percentual:  },
-        { pokemon: , percentual:  },
-        { pokemon: , percentual:  }
+        { pokemon: 'Annihilape', percentual: 10 },
+        { pokemon: 'Shuclke', percentual: 8 },
+        { pokemon: 'Mimikyu', percentual: 12 },
+        { pokemon: 'Garchomp', percentual: 15 },
+        { pokemon: 'Greninja', percentual: 20 },
+        { pokemon: 'Gengar', percentual: 10 },
+        { pokemon: 'Charizard', percentual: 25 }
     ];
     
     // tabel do raking
     const rankingData = [
-        { position: 1, pokemon:  },
-        { position: 2, pokemon: },
-        { position: 3, pokemon:  },
-        { position: 4, pokemon:  },
-        { position: 5, pokemon:  }
+        { position: 1, pokemon: 'Pikachu' },
+        { position: 2, pokemon: 'Charizard' },
+        { position: 3, pokemon: 'Greninja' },
+        { position: 4, pokemon: 'Lucario' },
+        { position: 5, pokemon: 'Eevee' }
     ];
 
     const percentualTableBody = document.getElementById('percentual-table-body');
@@ -240,7 +240,7 @@
     const ctx = document.getElementById('grafico1');
 
     let labelsX = ["Annihilape", "Shuclke", "Mimikyu", "Garchomp", "Greninja", "Gengar", "Charizard", "Lucario", "Eevee", "Pikachu", "Outros"];
-    let valores = [];
+    let valores = [150, 150, 200, 300, 380, 380, 480, 484, 464, 1000, 345];
     
     new Chart(ctx, {
         type: 'bar',
