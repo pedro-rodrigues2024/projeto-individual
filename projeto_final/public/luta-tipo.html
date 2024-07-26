@@ -221,25 +221,25 @@
 
 
   <script>
-    const pokemons = {
-      normal: "imagens/snorlax.png",
-      eletrico: "imagens/jolteon.png",
-      lutador: "imagens/hitmonlee.png",
-      voador: "imagens/tornadus.png",
-      pedra: "imagens/gigalith.png",
-      sombrio: "imagens/zoroark.png",
-      fogo: "imagens/arcanine.png",
-      planta: "imagens/sceptile.png",
-      venenoso: "imagens/arbok.png",
-      psiquico: "imagens/alakazam.png",
-      fantasma: "imagens/banette.png",
-      metal: "imagens/melmetal.png",
-      agua: "imagens/blastoise.png",
-      gelo: "imagens/glalie.png",
-      terra: "imagens/sandslash.png",
-      inseto: "imagens/pinsir.png",
-      dragao: "imagens/haxorus.png",
-      fada: "imagens/sylveon.png",
+    var pokemons = {
+      normal: "poke-pasta/normal.png",
+      eletrico: "poke-pasta/elétrico.png",
+      lutador: "poke-pasta/hitmonlee.png",
+      voador: "poke-pasta/tornadus.png",
+      pedra: "poke-pasta/gigalith.png",
+      sombrio: "poke-pasta/zoroark.png",
+      fogo: "poke-pasta/arcanine.png",
+      planta: "poke-pasta/sceptile.png",
+      venenoso: "poke-pasta/arbok.png",
+      psiquico: "poke-pasta/alakazam.png",
+      fantasma: "poke-pasta/banette.png",
+      metal: "poke-pasta/melmetal.png",
+      agua: "poke-pasta/blastoise.png",
+      gelo: "poke-pasta/glalie.png",
+      terra: "poke-pasta/sandslash.png",
+      inseto: "poke-pasta/pinsir.png",
+      dragao: "poke-pasta/haxorus.png",
+      fada: "poke-pasta/sylveon.png",
     };
 
     let atacanteNome = "";
@@ -247,7 +247,7 @@
     let atacanteTipo = "";
     let defensorTipo = "";
 
-    const tipoVantagens = {
+    var tipoVantagens = {
       normal: { forte: [], fraco: ["pedra", "metal"], imune: ["fantasma"] },
       eletrico: { forte: ["agua", "voador"], fraco: ["planta", "dragao", "eletrico"], imune: ["terra"] },
       lutador: { forte: ["normal", "pedra", "metal", "gelo", "sombrio"], fraco: ["voador", "venenoso", "psiquico", "inseto", "fada"], imune: ["fantasma"] },
@@ -269,9 +269,9 @@
     };
 
     document.getElementById("tipoAtacante").addEventListener("change", function () {
-      const tipo = this.value;
-      const imageUrl = pokemons[tipo] || "";
-      const imageDisplay1 = document.getElementById("image-display1");
+      var tipo = this.value;
+      var imageUrl = pokemons[tipo] || "";
+      var imageDisplay1 = document.getElementById("image-display1");
 
       if (imageUrl) {
         imageDisplay1.style.backgroundImage = `url(${imageUrl})`;
@@ -287,9 +287,9 @@
     });
 
     document.getElementById("tipoDefensor").addEventListener("change", function () {
-      const tipo = this.value;
-      const imageUrl = pokemons[tipo] || "";
-      const imageDisplay2 = document.getElementById("image-display2");
+      var tipo = this.value;
+      var imageUrl = pokemons[tipo] || "";
+      var imageDisplay2 = document.getElementById("image-display2");
 
       if (imageUrl) {
         imageDisplay2.style.backgroundImage = `url(${imageUrl})`;
@@ -304,126 +304,129 @@
       updateDefensor(tipo);
     });
 
-    const ataques = {
-      normal: ["Giga Impacto/Giga Impect", "Cabeçada", "Amnésia", "Descanso"],
-      eletrico: ["Choque do Trovão", "Onda de Choque", "Raio", "Cauda de Ferro"],
-      lutador: ["Chute Baixo", "Chute Circular", "Chute Triplo", "Mega Soco"],
-      voador: ["Ataque de Asa", "Ataque Aéreo", "Dança das Penas", "Acrobacia"],
-      pedra: ["Deslize de Pedras", "Lâmina de Pedra", "Explosão de Pedras", "Tempestade de Areia"],
-      sombrio: ["Ataque Noturno", "Ataque Sombrio", "Punho das Sombras", "Armadura Sombria"],
-      fogo: ["Lança-Chamas", "Queimadura", "Chama da Vingança", "Erupção"],
-      planta: ["Folha Navalha", "Chicote de Cipó", "Raio Solar", "Semente Sanguessuga"],
-      venenoso: ["Jato de Veneno", "Gás Venenoso", "Bomba de Lodo", "Golpe Venenoso"],
-      psiquico: ["Confusão", "Psybeam", "Psyshock", "Campo Psíquico"],
-      fantasma: ["Bola Sombria", "Assombração", "Punho Fantasma", "Campo Fantasma"],
-      metal: ["Canhão de Flash", "Garra de Metal", "Cabeçada de Ferro", "Lâmina de Ferro"],
-      agua: ["Jato de Água", "Hidro Bomba", "Pulso de Água", "Dança da Chuva"],
-      gelo: ["Rajada de Gelo", "Lança de Gelo", "Tempestade de Neve", "Congelamento"],
-      terra: ["Terremoto", "Fissura", "Caveira de Terra", "Deslizamento de Terra"],
-      inseto: ["Picada de Inseto", "Pó de Vento", "Mordida de Inseto", "Defesa de Casulo"],
-      dragao: ["Sopro de Dragão", "Fúria do Dragão", "Garra de Dragão", "Pulso do Dragão"],
-      fada: ["Vento Encantado", "Brilho Mágico", "Bajulação", "Armadura de Fada"],
+    var ataques = {
+      normal: ["Giga Impacto/Giga Impect", "Pancada Corporal/Body Slam", "Derrubar/Take Down", "Hiper Raio/Hyper Beam"],
+      eletrico: ["Choque do Trovão/Thunderbolt", "Presa do Trovão/Thunder Fang", "Trovão/Thunder", "Bola Elétrica/Electro Ball"],
+      lutador: ["Chute Duplo/Double Kick", "Corpo-a-corpo/Close Combat", "Chute de Pulo Alto/High Jump Kick", "Quebra Telha/Brick Break"],
+      voador: ["Furacão/Hurricane", "Ás dos Ares/Aerial Ace", "Voar/Fly", "Acrobacia/Acrobatics"],
+      pedra: ["Deslize de Pedras/Rock Slide", "Gume de Pedra/Stone Edge", "Explosão de Pedras/Rock Blast", "Gema Poderosa/Power Gem"],
+      sombrio: ["Talho Noturno/Night Slash", "Pulso Sombrio/Dark Pulse", "Mastigada/Crunch", "Rosnado/Snarl"],
+      fogo: ["Lança-Chamas/Flamethrower", "Onda de Calor/Heat Wave", "Superaquecer/Overheat", "Presa de Fogo/Fire Fang"],
+      planta: ["Lâmina de Folha/Leaf Blade", "Tempestade de Folhas/Leaf Storm", "Raio Solar/Solar Beam", "Lâmina Solar/Solar Blade"],
+      venenoso: ["Onda de Lama/Sludge Wave", "Cauda Venenosa/Poison Tail", "Bomba de Lodo/Sludge Bomb", "Golpe Venenoso/Poison Jab"],
+      psiquico: ["Confusão/Confusion", "Psíquico/Psychic", "Choque Psíquico/Psyshock", "Corte Psíquico/Psycho Cut"],
+      fantasma: ["Bola Sombria/Shadow Ball", "Sombra Noturna/Night Shade", "Garra Sombria/Shadow Claw", "Poltergeist/Poltergeist"],
+      metal: ["Canhão de Flash/Flash Cannon", "Giro Bola/Gyro Ball", "Cabeça de Ferro/Iron Head", "Pancada Dupla de Ferro/ Double Iron Bash"],
+      agua: ["Hidro Bomba/Hydro Pump", "Cauda D'água/Aqua Tail", "Pulso D'água/Water Pulse", "Hidro Canhão/Hydro Cannon"],
+      gelo: ["Presa de Gelo/Ice Fang", "Nevasca/Blizzard", "Hálito de Gelo/Frost Breath", "Raio de Gelo/Ice Beam"],
+      terra: ["Terremoto/Earthquake", "Cavar/Dig", "Poder da Terra/Earth Power", "Tumba de Areia"],
+      inseto: ["Picada de Inseto/Bug Bite", "Tesoura-X/X-Scissor", "Cortador de Fúria/Fury Cutter", "Briga de Inseto/Struggle Bug"],
+      dragao: ["Ultraje/Outrage", "Meteoro do Dragão/Draco Meteor", "Garra de Dragão/Dragon Claw", "Pulso do Dragão/Dragon Pulse"],
+      fada: ["Beijo Dreno/Draining Kiss", "explosão Lunar/Moonblast", "Jogo Duro/Play Rough", "Vento de Fada/Fairy Wind"],
     };
 
+    function updateAtaques(tipo) {
+      var ataquesPokemon = ataques[tipo];
+      var ataqueButtons = document.querySelectorAll("#ataque1, #ataque2, #ataque3, #ataque4");
+      ataqueButtons.forEach((button, index) => {
+        if (ataquesPokemon[index]) {
+          button.textContent = ataquesPokemon[index];
+          button.classList.remove("hidden");
+        } else {
+          button.classList.add("hidden");
+        }
+      });
+    }
 
+    function updateDefensor(tipo) {
+      var defesasPokemon = ataques[tipo];
+      var defesaButtons = document.querySelectorAll("#defesa1, #defesa2, #defesa3, #defesa4");
+      defesaButtons.forEach((button, index) => {
+        if (defesasPokemon[index]) {
+          button.textContent = defesasPokemon[index];
+          button.classList.remove("hidden");
+        } else {
+          button.classList.add("hidden");
+        }
+      });
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function atualizarImagem() {
-      var selectedAtacante = tipoAtacante.value;
-      var selectedDefensor = tipoDefensor.value;
-      var imageDisplay1 = document.getElementById('image-display1');
-      var imageDisplay2 = document.getElementById('image-display2');
-
-      if (tipoImagens[selectedAtacante]) {
-        imageDisplay1.style.backgroundImage = 'url(' + tipoImagens[selectedAtacante] + ')';
-        imageDisplay1.innerHTML = '';
+    function calcularDano(tipoAtacante, tipoDefensor) {
+      var vantagens = tipoVantagens[tipoAtacante] || { forte: [], fraco: [], imune: [] };
+      if (vantagens.imune.includes(tipoDefensor)) {
+        return 0;
+      } else if (vantagens.forte.includes(tipoDefensor)) {
+        return 20;
+      } else if (vantagens.fraco.includes(tipoDefensor)) {
+        return 5;
       } else {
-        imageDisplay1.style.backgroundImage = 'none';
-        imageDisplay1.innerHTML = 'Selecione uma imagem';
-      }
-
-      if (tipoImagens[selectedDefensor]) {
-        imageDisplay2.style.backgroundImage = 'url(' + tipoImagens[selectedDefensor] + ')';
-        imageDisplay2.innerHTML = '';
-      } else {
-        imageDisplay2.style.backgroundImage = 'none';
-        imageDisplay2.innerHTML = 'Selecione uma imagem';
+        return 10;
       }
     }
 
-    tipoAtacante.addEventListener('change', atualizarImagem);
-    tipoDefensor.addEventListener('change', atualizarImagem);
+    function atualizarBarraVida(elementId, dano) {
+      var barra = document.getElementById(elementId);
+      var larguraAtual = parseInt(barra.style.width);
+      var novaLargura = Math.max(larguraAtual - dano, 0);
+      barra.style.width = `${novaLargura}%`;
+      if (novaLargura > 50) {
+        barra.style.backgroundColor = "green";
+      } else if (novaLargura > 20) {
+        barra.style.backgroundColor = "yellow";
+      } else {
+        barra.style.backgroundColor = "red";
+      }
+      return novaLargura;
+    }
 
-    function irParaBatalha() {
-            var selectedAtacante = tipoAtacante.value;
-            var selectedDefensor = tipoDefensor.value;
-            window.location.href = `simulador.html?atacante=${selectedAtacante}&defensor=${selectedDefensor}`;
-        }
+    function adicionarAcaoLista(acao) {
+      var listaAcoes = document.getElementById("acoes");
+      var novoItem = document.createElement("li");
+      novoItem.textContent = acao;
+      listaAcoes.appendChild(novoItem);
+    }
 
-        function carregarHistorico() {
-            var historicoBatalhas = JSON.parse(localStorage.getItem('historicoBatalhas')) || [];
-            var campeoes = JSON.parse(localStorage.getItem('campeoes')) || [];
+    function atacar(id) {
+      if (!atacanteNome || !defensorNome) {
+        alert("Por favor, escolha ambos os Pokémon antes de começar a luta.");
+        return;
+      }
 
-            var historicoElement = document.getElementById('historico-batalhas');
-            var campeoesElement = document.getElementById('campeoes');
+      var ataquesAtacante = ataques[atacanteTipo];
+      var indexAtaque = parseInt(id.replace("ataque", "")) - 1;
+      var ataqueEscolhido = ataquesAtacante[indexAtaque];
 
-            historicoElement.innerHTML = '';
-            campeoesElement.innerHTML = '';
+      var dano = calcularDano(atacanteTipo, defensorTipo);
+      var novaVidaDefensor = atualizarBarraVida("defensor-hp", dano);
 
-            historicoBatalhas.forEach(function(batalha) {
-                var li = document.createElement('li');
-                li.textContent = batalha;
-                historicoElement.appendChild(li);
-            });
+      adicionarAcaoLista(`${atacanteNome} usou ${ataqueEscolhido} causando ${dano} de dano no ${defensorNome}.`);
 
-            campeoes.forEach(function(campeao) {
-                var li = document.createElement('li');
-                li.textContent = campeao;
-                campeoesElement.appendChild(li);
-            });
-        }
+      if (novaVidaDefensor === 0) {
+        alert(`${defensorNome} foi derrotado!`);
+        adicionarAcaoLista(`${defensorNome} foi derrotado!`);
+      }
+    }
 
-        window.onload = carregarHistorico;
+    function defender(id) {
+      if (!atacanteNome || !defensorNome) {
+        alert("Por favor, escolha ambos os Pokémon antes de começar a luta.");
+        return;
+      }
+
+      var ataquesDefensor = ataques[defensorTipo];
+      var indexAtaque = parseInt(id.replace("defesa", "")) - 1;
+      var ataqueEscolhido = ataquesDefensor[indexAtaque];
+
+      var dano = calcularDano(defensorTipo, atacanteTipo);
+      var novaVidaAtacante = atualizarBarraVida("atacante-hp", dano);
+
+      adicionarAcaoLista(`${defensorNome} usou ${ataqueEscolhido} causando ${dano} de dano no ${atacanteNome}.`);
+
+      if (novaVidaAtacante === 0) {
+        alert(`${atacanteNome} foi derrotado!`);
+        adicionarAcaoLista(`${atacanteNome} foi derrotado!`);
+      }
+    }
+
   </script>
 
