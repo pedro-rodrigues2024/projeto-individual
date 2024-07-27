@@ -29,7 +29,7 @@
         </div>
     </header>
 
-    <section>
+    <!-- <section>
         <div class="content">
             <div class="titulo-secao">
                 <h2 style="color: rgb(0, 0, 0);">Popularidade</h2>
@@ -123,7 +123,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <div id="dash">
         <div>
@@ -145,7 +145,7 @@
             <div class="box-info">
                 <!-- Tabela Percentual -->
                 <div class="metric-table">
-                    <h2 style="color: rgb(0, 0, 0);">Métrica Percentual</h2>
+                    <h2 style="color: rgb(0, 0, 0);">Percentual de Votos</h2>
                     <table>
                         <thead>
                             <tr>
@@ -161,7 +161,7 @@
 
                 <!-- Tabela de Ranking -->
                 <div class="metric-table">
-                    <h2 style="color: rgb(0, 0, 0);">Métrica de Ranking</h2>
+                    <h2 style="color: rgb(0, 0, 0);">Ranking de Popularidade</h2>
                     <table>
                         <thead>
                             <tr>
@@ -208,16 +208,26 @@
         { pokemon: 'Garchomp', percentual: 15 },
         { pokemon: 'Greninja', percentual: 20 },
         { pokemon: 'Gengar', percentual: 10 },
-        { pokemon: 'Charizard', percentual: 25 }
+        { pokemon: 'Charizard', percentual: 25 },
+        { pokemon: 'Lucario', percentual: 25 },
+        { pokemon: 'Eevee', percentual: 25 },
+        { pokemon: 'Pikachu', percentual: 25 },
+        { pokemon: 'Outros', percentual: 25 }
     ];
     
     // tabel do raking
     const rankingData = [
-        { position: 1, pokemon: 'Pikachu' },
-        { position: 2, pokemon: 'Charizard' },
-        { position: 3, pokemon: 'Greninja' },
-        { position: 4, pokemon: 'Lucario' },
-        { position: 5, pokemon: 'Eevee' }
+        { position: 1, pokemon: 'Annihilape' },
+        { position: 2, pokemon: 'Shuclke' },
+        { position: 3, pokemon: 'Mimikyu' },
+        { position: 4, pokemon: 'Garchomp' },
+        { position: 5, pokemon: 'Greninja' },
+        { position: 6, pokemon: 'Gengar' },
+        { position: 7, pokemon: 'Charizard' },
+        { position: 8, pokemon: 'Lucario' },
+        { position: 9, pokemon: 'Eevee' },
+        { position: 10, pokemon: 'Pikachu' },
+        { position: 11, pokemon: 'Outros' },
     ];
 
     const percentualTableBody = document.getElementById('percentual-table-body');
@@ -240,9 +250,9 @@
     const ctx = document.getElementById('grafico1');
 
     let labelsX = ["Annihilape", "Shuclke", "Mimikyu", "Garchomp", "Greninja", "Gengar", "Charizard", "Lucario", "Eevee", "Pikachu", "Outros"];
-    let valores = [150, 150, 200, 300, 380, 380, 480, 484, 464, 1000, 345];
+    let valores = [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000];
     
-    new Chart(ctx, {
+    let grafico1=new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labelsX,
@@ -261,7 +271,8 @@
         }
     });
 
-    fetch(endpoint.src)
+    const obterDados=()=>{
+        fetch(endpoint.src)
         .then(res => res.json())
         .then(res => {
             valores[0] = res.Annihilape;
@@ -275,10 +286,17 @@
             valores[8] = res.Eevee;
             valores[9] = res.Pikachu;
             valores[10] = res.outro;
+            grafico1.update()
         })
         .catch(erro => {
             console.log("ERRO: " + erro);
         });
-});
+    }
+    let intervalo=setInterval(obterDados,1000)
 
+
+
+
+
+});
 </script>
