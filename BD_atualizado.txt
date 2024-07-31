@@ -144,14 +144,22 @@ CREATE TABLE opcoesPokemon (
 -- Inserir algumas opções de Pokémon
 INSERT INTO opcoesPokemon (idPokemon, nomePokemon) VALUES
 (1, 'Annihilape'),
-(2, 'Mimikyu'),
-(3, 'Shuckle');
+(2, 'Shuckle'),
+(3, 'Mimikyu'),
+(4, 'Garchomp'),
+(5, 'Greninja'),
+(6, 'Gengar'),
+(7, 'Charizard'),
+(8,  'Lucario'),
+(9, 'Eevee'),
+(10, 'Pikachu'),
+(11, 'Outros') ;
 
 -- Inserção de dados na tabela cadastroUsuario
 INSERT INTO cadastroUsuario (email, username, senha, fkPokemon) VALUES
 ('pedro.email@gmail.com', 'PRIMEAPE', 'Prymal', 1),
-('giulia.email@gmail.com', 'Felen', 'Week', 2),
-('arthur.email@gmail.com', 'GrayWithfox', 'DarkHunter', 3);
+('giulia.email@gmail.com', 'Felen', 'Week', 3),
+('arthur.email@gmail.com', 'GrayWithfox', 'DarkHunter', 2);
 
 -- Visualizar as tabelas cadastroUsuario e opcoesPokemon
 SELECT * FROM cadastroUsuario;
@@ -169,8 +177,8 @@ CREATE TABLE loginUsuario (
 -- Inserção de dados na tabela loginUsuario
 INSERT INTO loginUsuario (fkCadastroUsuario, username, senha) VALUES
 (1, 'PRIMEAPE', 'Prymal'),
-(2, 'Felen', 'Week'),
-(3, 'GrayWithfox', 'DarkHunter');
+(3, 'Felen', 'Week'),
+(2, 'GrayWithfox', 'DarkHunter');
 
 -- Visualizar a tabela loginUsuario
 SELECT * FROM loginUsuario;
