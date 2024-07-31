@@ -116,20 +116,18 @@
 
 
 
-    window.onload = exibirAquariosDoUsuario();
+    window.onload = exibirDadosDoUsuario();
 
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
+    function exibirDadosDoUsuario() {
+        var dados = JSON.parse(sessionStorage.DADOS);
+        dados.forEach(item => {
+            document.getElementById("btnDados").innerHTML += `
+            <button class="btn-chart" onclick="exibirDados(${item.id})" id="btnDados${item.id}">${item.descricao}</button>
             `
 
             document.getElementById("graficos").innerHTML += `
                 <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
+
                     <div class="graph">
                         <canvas id="myChartCanvas${item.id}"></canvas>
                     </div>
@@ -142,15 +140,9 @@
             obterDadosGrafico(item.id)
         });
 
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
+        if (dados.length > 0) {
+            exibirDados(dados[0].id)
         }
-    }
-
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
     }
 
     function exibirAquario(idAquario) {
