@@ -27,63 +27,94 @@
 </head>
 
 <!-- <body onload=" atualizarFeed()"> -->
+    <body>
 
-<body>
-
-    <div class="janela">
-        <div class="header-left">
-            <h1>PrimeBlog</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
-
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
+        <div class="janela">
+            <div class="header-left">
+                <h1>PrimeBlog</h1>
+                <div id="dash">
+                    <div>
+                        <canvas id="grafico1"></canvas>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+    
+            
             </div>
         </div>
-    </div>
+        
+        <section>
+            <div class="content">
+                <div class="titulo-metrica">
+                    <h2 style="color: rgb(0, 0, 0);">Métricas de Popularidade</h2>
+                    <br>
+                    <div class="separator"></div>
+                </div>
+    
+                <div class="box-info">
+                    <!-- Tabela Percentual -->
+                    <div class="metric-table">
+                        <h2 style="color: rgb(0, 0, 0);">Percentual de Votos</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pokémon</th>
+                                    <th>Percentual (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="percentual-table-body">
+                                <!-- Dados serão inseridos via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+    
+                    <!-- Tabela de Ranking -->
+                    <div class="metric-table">
+                        <h2 style="color: rgb(0, 0, 0);">Ranking de Popularidade</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Posição</th>
+                                    <th>Pokémon</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ranking-table-body">
+                                <!-- Dados serão inseridos via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <div class="footer">
+            <div class="container">
+                <ul>
+                    <h3>Link</h3>
+                    <a href="index.html">Home</a><br>
+                    <a href="login.html">Faça seu Login já!</a><br>
+                    <a href="cadastro.html">Cadastro-se já!</a><br>
+                </ul>
+                <ul>
+                    <h3>Contatos</h3>
+                    <p>11 95800-9686</p>
+                    <p>Annihi_Master@outlook.com</p>
+                    <p>Brasil</p>
+                </ul>
+            </div>
+        </div>
+    
+    </body>
 
-
-</body>
 
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    b_cpf.innerHTML = sessionStorage.CPF_USUARIO;
 
-    let proximaAtualizacao;
+
+
 
     window.onload = exibirAquariosDoUsuario();
 
@@ -317,4 +348,108 @@
             });
 
     }
+
+//acho que adicionei certo
+    
+  // tabela do percentual
+  document.addEventListener('DOMContentLoaded', () => {
+    const percentualData = [
+        { pokemon: 'Annihilape', percentual: 10 },
+        { pokemon: 'Shuclke', percentual: 8 },
+        { pokemon: 'Mimikyu', percentual: 12 },
+        { pokemon: 'Garchomp', percentual: 15 },
+        { pokemon: 'Greninja', percentual: 20 },
+        { pokemon: 'Gengar', percentual: 10 },
+        { pokemon: 'Charizard', percentual: 25 },
+        { pokemon: 'Lucario', percentual: 25 },
+        { pokemon: 'Eevee', percentual: 25 },
+        { pokemon: 'Pikachu', percentual: 25 },
+        { pokemon: 'Outros', percentual: 25 }
+    ];
+    
+    // tabel do raking
+    const rankingData = [
+        { position: 1, pokemon: 'Annihilape' },
+        { position: 2, pokemon: 'Shuclke' },
+        { position: 3, pokemon: 'Mimikyu' },
+        { position: 4, pokemon: 'Garchomp' },
+        { position: 5, pokemon: 'Greninja' },
+        { position: 6, pokemon: 'Gengar' },
+        { position: 7, pokemon: 'Charizard' },
+        { position: 8, pokemon: 'Lucario' },
+        { position: 9, pokemon: 'Eevee' },
+        { position: 10, pokemon: 'Pikachu' },
+        { position: 11, pokemon: 'Outros' },
+    ];
+
+    const percentualTableBody = document.getElementById('percentual-table-body');
+    const rankingTableBody = document.getElementById('ranking-table-body');
+
+      // tabela do percentual
+    percentualData.forEach(data => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${data.pokemon}</td><td>${data.percentual}%</td>`;
+        percentualTableBody.appendChild(row);
+    });
+
+        // tabel do raking
+    rankingData.forEach(data => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${data.position}</td><td>${data.pokemon}</td>`;
+        rankingTableBody.appendChild(row);
+    });
+
+    const ctx = document.getElementById('grafico1');
+
+    let labelsX = ["Annihilape", "Shuclke", "Mimikyu", "Garchomp", "Greninja", "Gengar", "Charizard", "Lucario", "Eevee", "Pikachu", "Outros"];
+    let valores = [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000];
+    
+    let grafico1=new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labelsX,
+            datasets: [{
+                label: '# of Votes',
+                data: valores,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const obterDados=()=>{
+        fetch(endpoint.src)
+        .then(res => res.json())
+        .then(res => {
+            valores[0] = res.Annihilape;
+            valores[1] = res.Shuclke;
+            valores[2] = res.Mimikyu;
+            valores[3] = res.Garchomp;
+            valores[4] = res.Greninja;
+            valores[5] = res.Gengar;
+            valores[6] = res.Charizard;
+            valores[7] = res.Lucario;
+            valores[8] = res.Eevee;
+            valores[9] = res.Pikachu;
+            valores[10] = res.outro;
+            grafico1.update()
+        })
+        .catch(erro => {
+            console.log("ERRO: " + erro);
+        });
+    }
+    let intervalo=setInterval(obterDados,1000)
+
+
+
+
+
+});
+
 </script>
