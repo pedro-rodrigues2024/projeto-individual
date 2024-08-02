@@ -69,7 +69,10 @@ SELECT * FROM loginUsuario;
 
 
 -- mostra a quantidade de votos selecionados
-select count(fkPokemon), nomePokemon from cadastroUsuario join opcoesPokemon on idPokemon = fkPokemon group by nomePokemon;
+SELECT COUNT(fkPokemon), nomePokemon
+FROM cadastroUsuario
+JOIN opcoesPokemon ON idPokemon = fkPokemon
+GROUP BY nomePokemon;
 
 -- mostra a quantidade de votos selecionados, só que, neste caso, emforma de ranking
 SELECT COUNT(fkPokemon) AS quantidade, nomePokemon
@@ -79,6 +82,7 @@ GROUP BY nomePokemon
 ORDER BY quantidade ASC;
 
 -- Consultas para métricas
+
 -- 1. Contagem de usuários por nome de usuário, ordenados em ordem alfabética
 SELECT username, COUNT(*) AS count 
 FROM cadastroUsuario 
@@ -128,6 +132,7 @@ FROM loginUsuario
 WHERE idLoginUsuario = (SELECT MIN(idLoginUsuario) FROM loginUsuario);
 
 -- Consultas adicionais usando JOIN
+
 -- 11. Listar todos os logins com detalhes de usuários associados
 SELECT l.idLoginUsuario, l.username AS loginUsername, l.senha AS loginSenha, 
        c.idCadastroUsuario, c.email, c.username AS cadastroUsername, c.fkPokemon, p.nomePokemon AS pokemonFavorito
