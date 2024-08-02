@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Votes</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Pokémon</th>
+                <th>Percentual (%)</th>
+            </tr>
+        </thead>
+        <tbody id="pokemon-table-body">
+            <!-- Rows will be populated by JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        const pokemonData = [
+            { pokemon: 'Annihilape', percentual: 10 },
+            { pokemon: 'Shuckle', percentual: 8 },
+            { pokemon: 'Mimikyu', percentual: 12 },
+            { pokemon: 'Garchomp', percentual: 15 },
+            { pokemon: 'Greninja', percentual: 20 },
+            { pokemon: 'Gengar', percentual: 10 },
+            { pokemon: 'Charizard', percentual: 25 },
+            { pokemon: 'Lucario', percentual: 25 },
+            { pokemon: 'Eevee', percentual: 25 },
+            { pokemon: 'Pikachu', percentual: 25 },
+            { pokemon: 'Outros', percentual: 25 }
+        ];
+
+        function populateTable(data) {
+            const tableBody = document.getElementById('pokemon-table-body');
+            let totalPercentual = data.reduce((total, item) => total + item.percentual, 0);
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                const pokemonCell = document.createElement('td');
+                const percentualCell = document.createElement('td');
+
+                pokemonCell.textContent = item.pokemon;
+                percentualCell.textContent = ((item.percentual / totalPercentual) * 100).toFixed(2);
+
+                row.appendChild(pokemonCell);
+                row.appendChild(percentualCell);
+                tableBody.appendChild(row);
+            });
+        }
+
+        populateTable(pokemonData);
+    </script>
+</body>
+</html>

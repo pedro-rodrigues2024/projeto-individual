@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
 </head>
+
 <body>
     <header>
         <div class="header">
@@ -28,102 +30,6 @@
             </div>
         </div>
     </header>
-
-    <!-- <section>
-        <div class="content">
-            <div class="titulo-secao">
-                <h2 style="color: rgb(0, 0, 0);">Popularidade</h2>
-                <br>
-                <div class="separator"></div>
-                <br>
-                <p style="color: rgb(0, 0, 0);">Ranking dos Pokémon mais populares</p>
-            </div>
-
-            <div class="box-info">
-                <div class="metric" style="margin-bottom: 20px; text-align: center;">
-                    <h2 style="color: rgb(0, 0, 0);">Métrica Percentual</h2>
-                    <div id="percentual-metric" style="font-size: 2em; color: #4caf50;">0%</div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #a00000, #FF5370);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Annihilape</h3>
-                        <p>150</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #7fdb23, #a0da67);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Shuclke</h3>
-                        <p>150</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #4d0758, #7853ff);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Mimikyu</h3>
-                        <p>200</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #1039f2, #6610f2);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Garchomp</h3>
-                        <p>300</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #001aff, #00ccff);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Greninja</h3>
-                        <p>380</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #4d0758, #7853ff);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Gengar</h3>
-                        <p>380</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #ff6200, #ff904c);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Charizard</h3>
-                        <p>480</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #a00000, #FF5370);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Lucario</h3>
-                        <p>484</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #f8ef9d, #ece69e);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Eevee</h3>
-                        <p>464</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #ffff00, #ffff54);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Pikachu</h3>
-                        <p>1.000</p>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(451deg, #f2ebab, #ff00fb);" class="box-info-single">
-                    <div class="info-text">
-                        <h3>Outros</h3>
-                        <p>345</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <div id="dash">
         <div>
@@ -196,108 +102,216 @@
     </div>
 
 </body>
+
 </html>
 
 <script>
-    
-  // tabela do percentual
-  document.addEventListener('DOMContentLoaded', () => {
-    const percentualData = [
-        { pokemon: 'Annihilape', percentual: 10 },
-        { pokemon: 'Shuclke', percentual: 8 },
-        { pokemon: 'Mimikyu', percentual: 12 },
-        { pokemon: 'Garchomp', percentual: 15 },
-        { pokemon: 'Greninja', percentual: 20 },
-        { pokemon: 'Gengar', percentual: 10 },
-        { pokemon: 'Charizard', percentual: 25 },
-        { pokemon: 'Lucario', percentual: 25 },
-        { pokemon: 'Eevee', percentual: 25 },
-        { pokemon: 'Pikachu', percentual: 25 },
-        { pokemon: 'Outros', percentual: 25 }
-    ];
-    
-    // tabel do raking
-    const rankingData = [
-        { position: 1, pokemon: 'Annihilape' },
-        { position: 2, pokemon: 'Shuclke' },
-        { position: 3, pokemon: 'Mimikyu' },
-        { position: 4, pokemon: 'Garchomp' },
-        { position: 5, pokemon: 'Greninja' },
-        { position: 6, pokemon: 'Gengar' },
-        { position: 7, pokemon: 'Charizard' },
-        { position: 8, pokemon: 'Lucario' },
-        { position: 9, pokemon: 'Eevee' },
-        { position: 10, pokemon: 'Pikachu' },
-        { position: 11, pokemon: 'Outros' },
-    ];
 
-    const percentualTableBody = document.getElementById('percentual-table-body');
-    const rankingTableBody = document.getElementById('ranking-table-body');
-
-      // tabela do percentual
-    percentualData.forEach(data => {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td>${data.pokemon}</td><td>${data.percentual}%</td>`;
-        percentualTableBody.appendChild(row);
-    });
-
-        // tabel do raking
-    rankingData.forEach(data => {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td>${data.position}</td><td>${data.pokemon}</td>`;
-        rankingTableBody.appendChild(row);
-    });
-
-    const ctx = document.getElementById('grafico1');
-
-    let labelsX = ["Annihilape", "Shuclke", "Mimikyu", "Garchomp", "Greninja", "Gengar", "Charizard", "Lucario", "Eevee", "Pikachu", "Outros"];
-    let valores = [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000];
-    
-    let grafico1=new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labelsX,
-            datasets: [{
-                label: '# of Votes',
-                data: valores,
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+    //puxar os dados, que são os mesmos da tabela ranking
+    function pokemonPct() {
+        fetch('/usuarios/pokemonPct')
+            .then(resposta => {
+                if (!resposta.ok) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    throw new Error('Erro na requisição de Dados');
                 }
+                return resposta.json();
+            })
+            .then(resposta => {
+                if (resposta !== undefined) {
+                    pokemonPctTabela(resposta);
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao atualizar tabela:", error);
+            })
+    }
+
+    //pega a quantidade de votos, transforma em número, para depois dividir peo total (100) e ter a porcentagem (variavel auxiliar para cada Pokémon, onde é encrementada a cada voto)
+    function pokemonPctTabela(resposta) {
+
+        var totalPokemon = Number(resposta.length);
+        let pct = 100 / totalPokemon;
+
+        let um = 0;
+        let dois = 0;
+        let tres = 0;
+        let quatro = 0;
+        let cinco = 0;
+        let seis = 0;
+        let sete = 0;
+        let oito = 0;
+        let nove = 0;
+        let dez = 0;
+        let onze = 0;
+
+        //conta os votos de cada Pokémon
+        for (index = 0; index < resposta.length; index++) {
+            if (resposta[index].fkPokemon == 1) {
+                um++
+            } else if (resposta[index].fkPokemon == 2) {
+                dois++
+            } else if (resposta[index].fkPokemon == 3) {
+                tres++
+            } else if (resposta[index].fkPokemon == 4) {
+                quatro++
+            } else if (resposta[index].fkPokemon == 5) {
+                cinco++
+            } else if (resposta[index].fkPokemon == 6) {
+                seis++
+            } else if (resposta[index].fkPokemon == 7) {
+                sete++
+            } else if (resposta[index].fkPokemon == 8) {
+                oito++
+            } else if (resposta[index].fkPokemon == 9) {
+                nove++
+            } else if (resposta[index].fkPokemon == 10) {
+                dez++
+            } else {
+                onze++
             }
         }
-    });
 
-    const obterDados=()=>{
-        fetch(endpoint.src)
-        .then(res => res.json())
-        .then(res => {
-            valores[0] = res.Annihilape;
-            valores[1] = res.Shuclke;
-            valores[2] = res.Mimikyu;
-            valores[3] = res.Garchomp;
-            valores[4] = res.Greninja;
-            valores[5] = res.Gengar;
-            valores[6] = res.Charizard;
-            valores[7] = res.Lucario;
-            valores[8] = res.Eevee;
-            valores[9] = res.Pikachu;
-            valores[10] = res.outro;
-            grafico1.update()
-        })
-        .catch(erro => {
-            console.log("ERRO: " + erro);
+        // faz o cálculo de porcentagem
+        let umPct = um * pct;
+        let doisPct = dois * pct;
+        let tresPct = tres * pct;
+        let quatroPct = quatro * pct;
+        let cincoPct = cinco * pct;
+        let seisPct = seis * pct;
+        let setePct = sete * pct;
+        let oitoPct = oito * pct;
+        let novePct = nove * pct;
+        let dezPct = dez * pct;
+        let onzePct = onze * pct;
+
+        const percentualData = [
+            { pokemon: 'Annihilape', percentual: umPct },
+            { pokemon: 'Shuclke', percentual: doisPct },
+            { pokemon: 'Mimikyu', percentual: tresPct },
+            { pokemon: 'Garchomp', percentual: quatroPct },
+            { pokemon: 'Greninja', percentual: cincoPct },
+            { pokemon: 'Gengar', percentual: seisPct },
+            { pokemon: 'Charizard', percentual: setePct },
+            { pokemon: 'Lucario', percentual: oitoPct },
+            { pokemon: 'Eevee', percentual: novePct },
+            { pokemon: 'Pikachu', percentual: dezPct },
+            { pokemon: 'Outros', percentual: onzePct }
+        ];
+
+        const percentualTableBody = document.getElementById('percentual-table-body');
+
+        //  traz e armazena os dados e os exibe
+        percentualData.forEach(data => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${data.pokemon}</td><td>${data.percentual}%</td>`;
+            percentualTableBody.appendChild(row);
         });
     }
-    let intervalo=setInterval(obterDados,1000)
+
+    pokemonPct();
+    // tabela do percentual
+    document.addEventListener('DOMContentLoaded', () => {
+
+        pokemonRank();
+
+        // confere se a requisição está funcionando
+        function pokemonRank() {
+
+            fetch(`/usuarios/pokemonRank`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+                        pokemonRankeado(resposta);
+                    });
+                } else {
+                    console.error('Erro na requisição')
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na requisição dos dados para o grafico: ${error.message}`);
+                });
+        }
+
+        // estrutura que mostra os dados no ranking, de acordo com a quantidade de votos (funciona a partir da requisição bem sucedida)
+        function pokemonRankeado(resposta) {
+
+            //variavel auxiliar de armazenamento dos daods
+            const rankingData = [];
+
+            const rankingTableBody = document.getElementById('ranking-table-body');
+
+            // estrutura de repetição que insere dados na variavel auxiliar
+            for (index = 0; index < resposta.length; index++) {
+                pokemonAtual = resposta[index]
+                rankingData.push({ position: index + 1, pokemon: pokemonAtual.nomePokemon })
+            }
+
+            // traz e armazena os dados e os exibe
+            rankingData.forEach(data => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${data.position}</td><td>${data.pokemon}</td>`;
+                rankingTableBody.appendChild(row);
+            });
+        }
 
 
 
+        DadosPokemon();
+        function DadosPokemon() {
+
+            fetch(`/usuarios/pokemon/`, { cache: 'no-store', }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        pokemonFavorito(resposta);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+                });
+        }
 
 
-});
+        // estrutura de repetição para aparecer os dados no grafico (ambas as var sãoauxiliares) 
+        var labelsX = [""];
+        var dados = [""];
+
+        function pokemonFavorito(resposta) {
+
+            for (index = 0; index < resposta.length; index++) {
+                labelsX.push(resposta[index].nomePokemon);
+                dados.push(resposta[index].favorito);
+            }
+
+            let grafico1 = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labelsX,
+                    datasets: [{
+                        label: "",
+                        data: dados,
+                        backgroundColor: 'red',
+                        borderColor: 'red',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+        }
+
+        const ctx = document.getElementById('grafico1');
+
+    });
 </script>

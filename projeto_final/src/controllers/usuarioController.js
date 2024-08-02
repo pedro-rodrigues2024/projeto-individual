@@ -47,6 +47,54 @@ function autenticar(req, res) {
 
 }
 
+function pokemon(req, res) {
+
+    usuarioModel.pokemon().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum pokemon favorito encontrado");
+        }
+        
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro os pokemons favoritos.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function pokemonRank(req, res) {
+
+    usuarioModel.pokemonRank().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum pokemon favorito encontrado");
+        }
+        
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro os pokemons favoritos.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function pokemonPct(req, res) {
+
+    usuarioModel.pokemonPct().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum pokemon favorito encontrado");
+        }
+        
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro os pokemons favoritos.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var username = req.body.usernameServer;
@@ -86,5 +134,8 @@ function cadastrar(req, res) {
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    pokemon,
+    pokemonRank,
+    pokemonPct
 }
