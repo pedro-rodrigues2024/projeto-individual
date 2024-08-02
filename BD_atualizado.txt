@@ -1,125 +1,3 @@
-create database projetoIndividual;
--- drop database projetoIndividual;
-use projetoIndividual;
-
-create table cadastroUsuario(
-idCadastroUsuario int primary key auto_increment,
-email varchar(100),
-username varchar(100),
-senha varchar (100),
-pokémonFavorito varchar (100)
-);
-
-insert into cadastroUsuario value
-(default, 'pedro.email@gmail.com', 'PRIMEAPE', 'Prymal', 'Annihilape'),
-(default, 'giulia.email@gmail.com', 'Felen', 'Week', 'Mimikyu'),
-(default, 'arthur.email@gmail.com', 'GrayWithfox', 'DarkHunter', 'Shuclke');
-
-select * from cadastroUsuario;
-
-create table loginUsuario(
-idLoginUsuario int primary key auto_increment,
-fkCadastroUsuario int,
-constraint fkCadastroUsuario foreign key (fkCadastroUsuario)
-	references cadastroUsuario(idCadastroUsuario),
-username varchar (100),
-senha varchar (100)
-);
-
-insert into loginUsuario value
-(default, 1,'PRIMEAPE', 'Prymal'),
-(default, 2, 'Felen', 'Week'),
-(default, 3, 'GrayWithfox', 'DarkHunter');
-
-select * from loginUsuario;
-
--- Consultas para métricas
--- 1. Contagem de usuários por nome de usuário, ordenados em ordem alfabética
-SELECT username, COUNT(*) as count 
-FROM cadastroUsuario 
-GROUP BY username 
-ORDER BY username;
-
--- 2. Contagem de logins por nome de usuário, ordenados em ordem alfabética
-SELECT username, COUNT(*) as count 
-FROM loginUsuario 
-GROUP BY username 
-ORDER BY username;
-
--- 3. Usuário com o maior ID de cadastro
-SELECT MAX(idCadastroUsuario) as maxId 
-FROM cadastroUsuario;
-
--- 4. Usuário com o menor ID de cadastro
-SELECT MIN(idCadastroUsuario) as minId 
-FROM cadastroUsuario;
-
--- 5. Usuário com o maior ID de login
-SELECT MAX(idLoginUsuario) as maxId 
-FROM loginUsuario;
-
--- 6. Usuário com o menor ID de login
-SELECT MIN(idLoginUsuario) as minId 
-FROM loginUsuario;
-
--- 7. Detalhes do usuário com o maior ID de cadastro
-SELECT * 
-FROM cadastroUsuario 
-WHERE idCadastroUsuario = (SELECT MAX(idCadastroUsuario) FROM cadastroUsuario);
-
--- 8. Detalhes do usuário com o menor ID de cadastro
-SELECT * 
-FROM cadastroUsuario 
-WHERE idCadastroUsuario = (SELECT MIN(idCadastroUsuario) FROM cadastroUsuario);
-
--- 9. Detalhes do login com o maior ID de login
-SELECT * 
-FROM loginUsuario 
-WHERE idLoginUsuario = (SELECT MAX(idLoginUsuario) FROM loginUsuario);
-
--- 10. Detalhes do login com o menor ID de login
-SELECT * 
-FROM loginUsuario 
-WHERE idLoginUsuario = (SELECT MIN(idLoginUsuario) FROM loginUsuario);
-
--- Consultas adicionais usando JOIN
--- 11. Listar todos os logins com detalhes de usuários associados
-SELECT l.idLoginUsuario, l.username as loginUsername, l.senha as loginSenha, 
-       c.idCadastroUsuario, c.email, c.username as cadastroUsername, c.pokemonFavorito 
-FROM loginUsuario l
-JOIN cadastroUsuario c ON l.fkCadastroUsuario = c.idCadastroUsuario
-ORDER BY l.idLoginUsuario;
-
--- 12. Contagem de logins por usuário (username do cadastro)
-SELECT c.username as cadastroUsername, COUNT(l.idLoginUsuario) as loginCount
-FROM cadastroUsuario c
-LEFT JOIN loginUsuario l ON c.idCadastroUsuario = l.fkCadastroUsuario
-GROUP BY c.username
-ORDER BY loginCount DESC;
-
--- 13. Usuário (do cadastro) com mais logins
-SELECT c.username as cadastroUsername, COUNT(l.idLoginUsuario) as loginCount
-FROM cadastroUsuario c
-LEFT JOIN loginUsuario l ON c.idCadastroUsuario = l.fkCadastroUsuario
-GROUP BY c.username
-ORDER BY loginCount DESC
-LIMIT 1;
-
--- 14. Usuário (do cadastro) com menos logins
-SELECT c.username as cadastroUsername, COUNT(l.idLoginUsuario) as loginCount
-FROM cadastroUsuario c
-LEFT JOIN loginUsuario l ON c.idCadastroUsuario = l.fkCadastroUsuario
-GROUP BY c.username
-ORDER BY loginCount ASC
-LIMIT 1;
-
-
-
-
-
-
-
-
 -- Criação do banco de dados
 CREATE DATABASE projetoIndividual;
 -- DROP DATABASE projetoIndividual;
@@ -141,7 +19,7 @@ CREATE TABLE opcoesPokemon (
     nomePokemon VARCHAR(100) NOT NULL
 );
 
--- Inserir algumas opções de Pokémon
+-- Inserir  opções de Pokémon
 INSERT INTO opcoesPokemon (idPokemon, nomePokemon) VALUES
 (1, 'Annihilape'),
 (2, 'Shuckle'),
@@ -160,6 +38,12 @@ INSERT INTO cadastroUsuario (email, username, senha, fkPokemon) VALUES
 ('pedro.email@gmail.com', 'PRIMEAPE', 'Prymal', 1),
 ('giulia.email@gmail.com', 'Felen', 'Week', 3),
 ('arthur.email@gmail.com', 'GrayWithfox', 'DarkHunter', 2);
+
+INSERT INTO cadastroUsuario (email, username, senha, fkPokemon) VALUES
+('joao.email@gmail.com', 'joao', '12345678', 1);
+
+INSERT INTO cadastroUsuario (email, username, senha, fkPokemon) VALUES
+('jack.email@gmail.com', 'jack', '87654321', 10);
 
 -- Visualizar as tabelas cadastroUsuario e opcoesPokemon
 SELECT * FROM cadastroUsuario;
@@ -182,6 +66,17 @@ INSERT INTO loginUsuario (fkCadastroUsuario, username, senha) VALUES
 
 -- Visualizar a tabela loginUsuario
 SELECT * FROM loginUsuario;
+
+
+-- mostra a quantidade de votos selecionados
+select count(fkPokemon), nomePokemon from cadastroUsuario join opcoesPokemon on idPokemon = fkPokemon group by nomePokemon;
+
+-- mostra a quantidade de votos selecionados, só que, neste caso, emforma de ranking
+SELECT COUNT(fkPokemon) AS quantidade, nomePokemon
+FROM cadastrousuario
+JOIN opcoesPokemon ON opcoesPokemon.idPokemon = cadastroUsuario.fkPokemon
+GROUP BY nomePokemon
+ORDER BY quantidade ASC;
 
 -- Consultas para métricas
 -- 1. Contagem de usuários por nome de usuário, ordenados em ordem alfabética
