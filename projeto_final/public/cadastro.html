@@ -113,7 +113,7 @@
     // senha1 
     else if(senha1Var.length <= 6){
       mensagem_erro.innerHTML =
-        "Senha muito pequena. Mínimo 7 dígitos";
+        "Senha muito pequena. Mínimo 7 caracteres";
       // finalizarAguardar();
       return false;
     }
@@ -124,6 +124,7 @@
       // finalizarAguardar();
       return false;
     }
+    
     else if (
       usernameVar == "" ||
       emailVar == "" ||

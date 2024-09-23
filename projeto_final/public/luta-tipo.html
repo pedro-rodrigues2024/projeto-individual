@@ -268,6 +268,8 @@
       fada: { forte: ["lutador", "dragao", "sombrio"], fraco: ["fogo", "venenoso", "metal"], imune: [] },
     };
 
+    //Código que representa a escolha das imagens
+
     document.getElementById("tipoAtacante").addEventListener("change", function () {
       var tipo = this.value;
       var imageUrl = pokemons[tipo] || "";
@@ -325,6 +327,8 @@
       fada: ["Beijo Dreno/Draining Kiss", "explosão Lunar/Moonblast", "Jogo Duro/Play Rough", "Vento de Fada/Fairy Wind"],
     };
 
+    //Representa os ataques
+
     function updateAtaques(tipo) {
       var ataquesPokemon = ataques[tipo];
       var ataqueButtons = document.querySelectorAll("#ataque1, #ataque2, #ataque3, #ataque4");
@@ -350,6 +354,8 @@
         }
       });
     }
+
+    
 
     function calcularDano(tipoAtacante, tipoDefensor) {
       var vantagens = tipoVantagens[tipoAtacante] || { forte: [], fraco: [], imune: [] };
